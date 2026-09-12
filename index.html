@@ -16,10 +16,12 @@
     --navy-soft:#a9bcd4;
     --ink:#1c1f24;
     --ink-soft:#585e66;
-    --line:#e4e4e2;
+    --ink-faint:#8a8f96;
+    --line:#e6e6e4;
     --accent:#b5672a;
     --accent-bg:#faf1e6;
-    --max:940px;
+    --card-bg:#fafafa;
+    --max:980px;
   }
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
@@ -35,6 +37,28 @@
   a{color:inherit;}
   a:focus-visible, button:focus-visible{outline:2px solid var(--accent); outline-offset:3px;}
 
+  /* ---- Nav ---- */
+  .nav{
+    position:sticky; top:0; z-index:10;
+    background:rgba(255,255,255,.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    max-width:var(--max); margin:0 auto; padding:14px 32px;
+    display:flex; align-items:center; justify-content:space-between;
+    gap:16px; flex-wrap:wrap;
+  }
+  .nav-name{font-family:'Fraunces', Georgia, serif; font-weight:600; font-size:16px; color:var(--navy);}
+  .nav-links{display:flex; gap:20px; flex-wrap:wrap;}
+  .nav-links a{
+    font-size:13.5px; color:var(--ink-soft); text-decoration:none; font-weight:500;
+    padding:4px 0; border-bottom:1.5px solid transparent; transition:border-color .15s ease, color .15s ease;
+  }
+  .nav-links a:hover{color:var(--navy); border-color:var(--accent);}
+  @media (max-width:640px){ .nav-links{display:none;} }
+
+  /* ---- Hero ---- */
   .hero{
     background:linear-gradient(160deg, var(--navy) 0%, var(--navy-deep) 100%);
     color:#fff;
@@ -44,33 +68,19 @@
   }
   .hero::after{
     content:"";
-    position:absolute;
-    top:-120px; right:-120px;
-    width:340px; height:340px;
-    border-radius:50%;
+    position:absolute; top:-120px; right:-120px;
+    width:340px; height:340px; border-radius:50%;
     border:1px solid rgba(255,255,255,.08);
   }
   .hero-inner{max-width:var(--max); margin:0 auto; position:relative;}
   .hero h1{
-    font-family:'Fraunces', Georgia, serif;
-    font-weight:600;
-    font-size:40px;
-    letter-spacing:-0.01em;
-    margin:0 0 12px;
+    font-family:'Fraunces', Georgia, serif; font-weight:600;
+    font-size:40px; letter-spacing:-0.01em; margin:0 0 12px;
   }
-  .hero .role{
-    color:var(--navy-soft);
-    font-size:14.5px;
-    margin:0 0 16px;
-    font-weight:500;
-  }
+  .hero .role{color:var(--navy-soft); font-size:14.5px; margin:0 0 16px; font-weight:500;}
   .hero .school{
-    color:var(--navy-soft);
-    font-size:13.5px;
-    margin:0 0 22px;
-    padding-top:16px;
-    border-top:1px solid rgba(255,255,255,.14);
-    max-width:520px;
+    color:var(--navy-soft); font-size:13.5px; margin:0 0 22px;
+    padding-top:16px; border-top:1px solid rgba(255,255,255,.14); max-width:560px;
   }
   .hero .contact{font-size:14px;}
   .hero .contact a{text-decoration:none; border-bottom:1px solid rgba(255,255,255,.3); padding-bottom:1px; transition:border-color .15s ease;}
@@ -79,40 +89,44 @@
 
   .wrap{max-width:var(--max); margin:0 auto; padding:0 32px 80px;}
 
+  /* ---- Summary ---- */
   .summary{
     background:var(--accent-bg);
     border-left:3px solid var(--accent);
     border-radius:2px;
     padding:22px 24px;
-    margin:32px 0 44px;
-    font-size:15.5px;
-    line-height:1.7;
-    color:#3a2e22;
+    margin:32px 0 48px;
+    font-size:15.5px; line-height:1.7; color:#3a2e22;
   }
   .summary a{color:var(--navy); font-weight:600; text-decoration:none; border-bottom:1px solid transparent; transition:border-color .15s ease;}
   .summary a:hover{border-color:var(--navy);}
   .summary b{font-weight:600; color:var(--ink);}
 
+  /* ---- Section headers ---- */
+  .section-head{display:flex; align-items:baseline; justify-content:space-between; margin-bottom:22px; padding-bottom:10px; border-bottom:1px solid var(--line);}
   h2{
-    font-family:'Fraunces', Georgia, serif;
-    font-weight:600;
-    font-size:21px;
-    color:var(--navy);
-    margin:0 0 20px;
-    padding-bottom:10px;
-    border-bottom:1px solid var(--line);
+    font-family:'Fraunces', Georgia, serif; font-weight:600; font-size:22px; color:var(--navy); margin:0;
   }
+  .section-count{font-size:12.5px; color:var(--ink-faint); font-weight:500;}
 
-  .two-col{display:grid; grid-template-columns:1fr 1fr; gap:0 44px; margin-bottom:8px;}
-  @media (max-width:760px){ .two-col{grid-template-columns:1fr; gap:40px 0;} }
+  .two-col{display:grid; grid-template-columns:1fr 1fr; gap:0 48px; margin-bottom:8px;}
+  @media (max-width:760px){ .two-col{grid-template-columns:1fr; gap:44px 0;} }
 
-  section{margin-bottom:44px;}
+  section{margin-bottom:52px;}
+  section:target{scroll-margin-top:72px;}
 
-  .entry{margin-bottom:24px;}
+  /* ---- Timeline entries ---- */
+  .timeline{position:relative; padding-left:18px; border-left:2px solid var(--line);}
+  .entry{position:relative; margin-bottom:26px; padding-left:18px;}
   .entry:last-child{margin-bottom:0;}
+  .entry::before{
+    content:""; position:absolute; left:-27px; top:5px;
+    width:8px; height:8px; border-radius:50%;
+    background:var(--accent); border:2px solid #fff; box-shadow:0 0 0 1px var(--accent);
+  }
   .entry-top{display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:2px 12px;}
   .entry-title{font-weight:600; font-size:15.5px; color:var(--ink);}
-  .entry-dates{color:var(--ink-soft); font-size:12.5px; white-space:nowrap; font-variant-numeric:tabular-nums;}
+  .entry-dates{color:var(--ink-faint); font-size:12px; white-space:nowrap; font-variant-numeric:tabular-nums; font-weight:500;}
   .entry-org{color:var(--accent); font-size:13.5px; margin:2px 0 9px; font-weight:500;}
   .entry-org a{color:var(--accent); text-decoration:none; border-bottom:1px solid rgba(181,103,42,.35);}
   .entry-org a:hover{border-color:var(--accent);}
@@ -121,41 +135,66 @@
   li:last-child{margin-bottom:0;}
   li b{font-weight:600; color:var(--ink);}
 
-  .edu-block{margin-bottom:20px;}
-  .edu-block:last-child{margin-bottom:0;}
+  /* ---- Education ---- */
+  .edu-card{
+    background:var(--card-bg); border:1px solid var(--line); border-radius:8px;
+    padding:20px 22px;
+  }
   .edu-name{font-weight:600; font-size:15.5px; margin-bottom:3px; color:var(--ink);}
   .edu-detail{font-size:14px; color:var(--ink-soft);}
   .edu-detail b{color:var(--ink); font-weight:600;}
 
-  .cert-line, .lead-line{margin-bottom:12px; font-size:14.5px; color:var(--ink-soft);}
-  .cert-line:last-child, .lead-line:last-child{margin-bottom:0;}
-  .cert-line b, .lead-line b{font-weight:600; color:var(--ink);}
+  /* ---- Certifications / Leadership as cards ---- */
+  .card-list{display:grid; gap:12px;}
+  .info-card{
+    background:var(--card-bg); border:1px solid var(--line); border-radius:8px;
+    padding:14px 18px; font-size:14.5px; color:var(--ink-soft);
+  }
+  .info-card b{font-weight:600; color:var(--ink);}
 
+  /* ---- Honors badges ---- */
   .badges{display:flex; flex-wrap:wrap; gap:9px;}
   .badge{
-    border:1px solid var(--line);
-    border-radius:4px;
-    padding:8px 13px;
-    font-size:13px;
-    color:var(--ink-soft);
-    background:#fbfbfa;
+    border:1px solid var(--line); border-radius:20px;
+    padding:8px 16px; font-size:13px; color:var(--ink-soft); background:#fbfbfa;
   }
   .badge.highlight{border-color:var(--accent); color:var(--accent); background:var(--accent-bg); font-weight:600;}
 
-  .skills-grid{display:grid; grid-template-columns:1fr 1fr; gap:24px 44px;}
+  /* ---- Skills ---- */
+  .skills-grid{display:grid; grid-template-columns:1fr 1fr; gap:26px 48px;}
   @media (max-width:600px){ .skills-grid{grid-template-columns:1fr;} }
-  .skill-cat{font-weight:600; font-size:13.5px; color:var(--navy); margin-bottom:5px; letter-spacing:.01em;}
-  .skill-val{font-size:14px; color:var(--ink-soft);}
+  .skill-cat{font-weight:600; font-size:12.5px; color:var(--navy); margin-bottom:9px; letter-spacing:.03em; text-transform:uppercase;}
+  .pill-row{display:flex; flex-wrap:wrap; gap:7px;}
+  .pill{
+    font-size:13px; color:var(--ink-soft); background:var(--card-bg);
+    border:1px solid var(--line); border-radius:5px; padding:5px 10px;
+  }
 
-  footer{text-align:center; color:var(--ink-soft); font-size:12.5px; padding:32px 0 8px; border-top:1px solid var(--line);}
+  footer{text-align:center; color:var(--ink-faint); font-size:12.5px; padding:32px 0 8px; border-top:1px solid var(--line);}
 
   @media print{
+    .nav{display:none;}
     .hero{background:var(--navy) !important; -webkit-print-color-adjust:exact; print-color-adjust:exact;}
     a{border-bottom:none !important;}
   }
 </style>
 </head>
 <body>
+
+<div class="nav">
+  <div class="nav-inner">
+    <div class="nav-name">Dhairya Prajapati</div>
+    <div class="nav-links">
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#education">Education</a>
+      <a href="#certifications">Certifications</a>
+      <a href="#leadership">Leadership</a>
+      <a href="#honors">Honors</a>
+      <a href="#skills">Skills</a>
+    </div>
+  </div>
+</div>
 
 <div class="hero">
   <div class="hero-inner">
@@ -176,185 +215,201 @@
 
   <div class="two-col">
     <section id="experience">
-      <h2>Experience</h2>
-
-      <div class="entry">
-        <div class="entry-top">
-          <div class="entry-title">AI in Healthcare Intern</div>
-          <div class="entry-dates">2026</div>
-        </div>
-        <div class="entry-org">Pharmint Pte Ltd · Remote – Singapore</div>
-        <ul>
-          <li>Completed a 6-week internship in <b>predictive modeling and biomarker discovery</b> in cancer transcriptomics, mentored by a Mayo Clinic-affiliated computational biologist.</li>
-          <li>Engineered <b>differential gene expression analysis</b> (log2FC, adjusted p-values) and trained <b>ML classifiers</b> (Logistic Regression, Random Forest) to identify hypoxia-responsive gene signatures in breast cancer transcriptomics data (TCGA-BRCA, GEO).</li>
-        </ul>
+      <div class="section-head">
+        <h2>Experience</h2>
+        <span class="section-count">7 roles</span>
       </div>
+      <div class="timeline">
 
-      <div class="entry">
-        <div class="entry-top">
-          <div class="entry-title">Quantitative Analysis Research Mentee</div>
-          <div class="entry-dates">2024–2025</div>
+        <div class="entry">
+          <div class="entry-top">
+            <div class="entry-title">AI in Healthcare Intern</div>
+            <div class="entry-dates">2026</div>
+          </div>
+          <div class="entry-org">Pharmint Pte Ltd · Remote – Singapore</div>
+          <ul>
+            <li>Completed a 6-week internship in <b>predictive modeling and biomarker discovery</b> in cancer transcriptomics, mentored by a Mayo Clinic-affiliated computational biologist.</li>
+            <li>Engineered <b>differential gene expression analysis</b> (log2FC, adjusted p-values) and trained <b>ML classifiers</b> (Logistic Regression, Random Forest) to identify hypoxia-responsive gene signatures in breast cancer transcriptomics data (TCGA-BRCA, GEO).</li>
+          </ul>
         </div>
-        <div class="entry-org">CSPIT, CHARUSAT · Remote – India</div>
-        <ul>
-          <li>Conducted <b>stock trend analysis</b> in Python (pandas, statsmodels) using regression, moving averages, and time series methods under faculty mentorship.</li>
-          <li>Presented findings and visualizations, summarizing trend patterns and <b>forecasting insights</b>.</li>
-        </ul>
-      </div>
 
-      <div class="entry">
-        <div class="entry-top">
-          <div class="entry-title">Research Author</div>
-          <div class="entry-dates">2024</div>
+        <div class="entry">
+          <div class="entry-top">
+            <div class="entry-title">Quantitative Analysis Research Mentee</div>
+            <div class="entry-dates">2024–2025</div>
+          </div>
+          <div class="entry-org">CSPIT, CHARUSAT · Remote – India</div>
+          <ul>
+            <li>Conducted <b>stock trend analysis</b> in Python (pandas, statsmodels) using regression, moving averages, and time series methods under faculty mentorship.</li>
+            <li>Presented findings and visualizations, summarizing trend patterns and <b>forecasting insights</b>.</li>
+          </ul>
         </div>
-        <div class="entry-org">Researchory.org · Remote Research Program</div>
-        <ul>
-          <li>Authored a research paper on <b>household energy analytics</b>, applying exploratory data analysis (EDA) to identify usage patterns.</li>
-          <li>Documented methodology and efficiency recommendations for publication, strengthening <b>technical writing</b> and data storytelling skills.</li>
-        </ul>
-      </div>
 
-      <div class="entry">
-        <div class="entry-top">
-          <div class="entry-title">Data Science Simulation — Customer Analytics</div>
-          <div class="entry-dates">2025</div>
+        <div class="entry">
+          <div class="entry-top">
+            <div class="entry-title">Research Author</div>
+            <div class="entry-dates">2024</div>
+          </div>
+          <div class="entry-org">Researchory.org · Remote Research Program</div>
+          <ul>
+            <li>Authored a research paper on <b>household energy analytics</b>, applying exploratory data analysis (EDA) to identify usage patterns.</li>
+            <li>Documented methodology and efficiency recommendations for publication, strengthening <b>technical writing</b> and data storytelling skills.</li>
+          </ul>
         </div>
-        <div class="entry-org">British Airways (Forage) · Virtual Experience Program</div>
-        <ul>
-          <li>Completed an industry-assessed virtual program simulating a business analytics workflow, including <b>web scraping and customer profiling</b> in Python.</li>
-          <li>Built <b>UX visualizations</b> to communicate customer insights through a structured project workflow.</li>
-        </ul>
-      </div>
 
-      <div class="entry">
-        <div class="entry-top">
-          <div class="entry-title">Finance &amp; Banking Intern</div>
-          <div class="entry-dates">2024</div>
+        <div class="entry">
+          <div class="entry-top">
+            <div class="entry-title">Data Science Simulation — Customer Analytics</div>
+            <div class="entry-dates">2025</div>
+          </div>
+          <div class="entry-org">British Airways (Forage) · Virtual Experience Program</div>
+          <ul>
+            <li>Completed an industry-assessed virtual program simulating a business analytics workflow, including <b>web scraping and customer profiling</b> in Python.</li>
+            <li>Built <b>UX visualizations</b> to communicate customer insights through a structured project workflow.</li>
+          </ul>
         </div>
-        <div class="entry-org">Grey Sells · Dubai, UAE</div>
-        <ul>
-          <li>Shadowed banking professionals to learn <b>corporate finance, KYC, and valuation</b> processes over a two-week internship.</li>
-          <li>Assisted with basic <b>financial modelling</b> exercises, building foundational understanding of valuation techniques.</li>
-        </ul>
-      </div>
 
-      <div class="entry">
-        <div class="entry-top">
-          <div class="entry-title">Clinical Observer</div>
-          <div class="entry-dates">2024</div>
+        <div class="entry">
+          <div class="entry-top">
+            <div class="entry-title">Finance &amp; Banking Intern</div>
+            <div class="entry-dates">2024</div>
+          </div>
+          <div class="entry-org">Grey Sells · Dubai, UAE</div>
+          <ul>
+            <li>Shadowed banking professionals to learn <b>corporate finance, KYC, and valuation</b> processes over a two-week internship.</li>
+            <li>Assisted with basic <b>financial modelling</b> exercises, building foundational understanding of valuation techniques.</li>
+          </ul>
         </div>
-        <div class="entry-org">Medeor Hospital · Abu Dhabi, UAE</div>
-        <ul>
-          <li>Observed clinical workflows across <b>Cardiology, Neurology, and ICU</b> departments during a one-week hospital rotation.</li>
-          <li>Gained early exposure to health-tech systems and <b>data-driven decision-making</b> processes used in clinical settings.</li>
-        </ul>
-      </div>
 
-      <div class="entry">
-        <div class="entry-top">
-          <div class="entry-title">Python Intern</div>
-          <div class="entry-dates">2023</div>
+        <div class="entry">
+          <div class="entry-top">
+            <div class="entry-title">Clinical Observer</div>
+            <div class="entry-dates">2024</div>
+          </div>
+          <div class="entry-org">Medeor Hospital · Abu Dhabi, UAE</div>
+          <ul>
+            <li>Observed clinical workflows across <b>Cardiology, Neurology, and ICU</b> departments during a one-week hospital rotation.</li>
+            <li>Gained early exposure to health-tech systems and <b>data-driven decision-making</b> processes used in clinical settings.</li>
+          </ul>
         </div>
-        <div class="entry-org">BizzAppDev Systems Pvt. Ltd. · Remote – India</div>
-        <ul>
-          <li>Contributed to backend development tasks using <b>Python, PostgreSQL, and XML</b> in a live development environment.</li>
-          <li>Practiced coding standards and version-controlled workflows on Linux, supporting ongoing <b>software maintenance</b> tasks.</li>
-        </ul>
+
+        <div class="entry">
+          <div class="entry-top">
+            <div class="entry-title">Python Intern</div>
+            <div class="entry-dates">2023</div>
+          </div>
+          <div class="entry-org">BizzAppDev Systems Pvt. Ltd. · Remote – India</div>
+          <ul>
+            <li>Contributed to backend development tasks using <b>Python, PostgreSQL, and XML</b> in a live development environment.</li>
+            <li>Practiced coding standards and version-controlled workflows on Linux, supporting ongoing <b>software maintenance</b> tasks.</li>
+          </ul>
+        </div>
+
       </div>
     </section>
 
     <section id="projects">
-      <h2>Projects</h2>
-
-      <div class="entry">
-        <div class="entry-top">
-          <div class="entry-title">StudyBuddy — Cal Poly CodeBox Hackathon</div>
-          <div class="entry-dates">2026</div>
-        </div>
-        <div class="entry-org">Flask · Supabase · <a href="https://studybuddy-calpoly.bolt.host/" target="_blank" rel="noopener">Live Demo</a></div>
-        <ul>
-          <li>Built a full-stack <b>study coordination platform</b> that matches students into private Study Pods by course, topic, availability, and study style, using Flask for matching logic and Supabase for real-time, privacy-protected data.</li>
-          <li>Presented at the Cal Poly CodeBox Hackathon; shipped a deployed web app spanning Course Hubs, Study Requests, and a Solo Workspace for independent task tracking.</li>
-        </ul>
+      <div class="section-head">
+        <h2>Projects</h2>
+        <span class="section-count">5 builds</span>
       </div>
+      <div class="timeline">
 
-      <div class="entry">
-        <div class="entry-top">
-          <div class="entry-title">Jarvis — Offline AI Voice Assistant</div>
-          <div class="entry-dates">2026</div>
+        <div class="entry">
+          <div class="entry-top">
+            <div class="entry-title">StudyBuddy — Cal Poly CodeBox Hackathon</div>
+            <div class="entry-dates">2026</div>
+          </div>
+          <div class="entry-org">Flask · Supabase · <a href="https://studybuddy-calpoly.bolt.host/" target="_blank" rel="noopener">Live Demo</a></div>
+          <ul>
+            <li>Built a full-stack <b>study coordination platform</b> that matches students into private Study Pods by course, topic, availability, and study style, using Flask for matching logic and Supabase for real-time, privacy-protected data.</li>
+            <li>Presented at the Cal Poly CodeBox Hackathon; shipped a deployed web app spanning Course Hubs, Study Requests, and a Solo Workspace for independent task tracking.</li>
+          </ul>
         </div>
-        <div class="entry-org">Python · Whisper · Ollama (Llama 3)</div>
-        <ul>
-          <li>Built an <b>offline voice assistant</b> integrating speech recognition, conversational AI, and text-to-speech, processed locally for privacy and responsiveness.</li>
-          <li>Iterated through multiple development/testing cycles for reliable, <b>privacy-preserving local performance</b>.</li>
-        </ul>
-      </div>
 
-      <div class="entry">
-        <div class="entry-top">
-          <div class="entry-title">Study Planner — CS50x Capstone (HarvardX)</div>
-          <div class="entry-dates">2025</div>
+        <div class="entry">
+          <div class="entry-top">
+            <div class="entry-title">Jarvis — Offline AI Voice Assistant</div>
+            <div class="entry-dates">2026</div>
+          </div>
+          <div class="entry-org">Python · Whisper · Ollama (Llama 3)</div>
+          <ul>
+            <li>Built an <b>offline voice assistant</b> integrating speech recognition, conversational AI, and text-to-speech, processed locally for privacy and responsiveness.</li>
+            <li>Iterated through multiple development/testing cycles for reliable, <b>privacy-preserving local performance</b>.</li>
+          </ul>
         </div>
-        <div class="entry-org">Python · Flask · SQLite</div>
-        <ul>
-          <li>Designed a full-stack <b>study planning tool</b> with relational data modeling, parameterized queries, and ACID-compliant transactions for data integrity.</li>
-          <li>Built the application from concept through deployment, covering the full <b>software development lifecycle (SDLC)</b>.</li>
-        </ul>
-      </div>
 
-      <div class="entry">
-        <div class="entry-top">
-          <div class="entry-title">Food Ordering Portal</div>
-          <div class="entry-dates">2025</div>
+        <div class="entry">
+          <div class="entry-top">
+            <div class="entry-title">Study Planner — CS50x Capstone (HarvardX)</div>
+            <div class="entry-dates">2025</div>
+          </div>
+          <div class="entry-org">Python · Flask · SQLite</div>
+          <ul>
+            <li>Designed a full-stack <b>study planning tool</b> with relational data modeling, parameterized queries, and ACID-compliant transactions for data integrity.</li>
+            <li>Built the application from concept through deployment, covering the full <b>software development lifecycle (SDLC)</b>.</li>
+          </ul>
         </div>
-        <div class="entry-org">Python · MySQL</div>
-        <ul>
-          <li>Defined system requirements for admin/customer workflows, then designed a <b>relational database schema</b> and built a console-based CRUD application to meet them.</li>
-          <li>Applied parameterized queries and consistent <b>coding standards</b> to ensure data integrity throughout.</li>
-        </ul>
-      </div>
 
-      <div class="entry">
-        <div class="entry-top">
-          <div class="entry-title">Tangent Galvanometer Investigation</div>
-          <div class="entry-dates">—</div>
+        <div class="entry">
+          <div class="entry-top">
+            <div class="entry-title">Food Ordering Portal</div>
+            <div class="entry-dates">2025</div>
+          </div>
+          <div class="entry-org">Python · MySQL</div>
+          <ul>
+            <li>Defined system requirements for admin/customer workflows, then designed a <b>relational database schema</b> and built a console-based CRUD application to meet them.</li>
+            <li>Applied parameterized queries and consistent <b>coding standards</b> to ensure data integrity throughout.</li>
+          </ul>
         </div>
-        <div class="entry-org">Experimental Physics</div>
-        <ul>
-          <li>Estimated Earth's horizontal magnetic field and reduction factor K through careful experimental design, repeated trials, and data analysis.</li>
-        </ul>
+
+        <div class="entry">
+          <div class="entry-top">
+            <div class="entry-title">Tangent Galvanometer Investigation</div>
+            <div class="entry-dates">—</div>
+          </div>
+          <div class="entry-org">Experimental Physics</div>
+          <ul>
+            <li>Estimated Earth's horizontal magnetic field and reduction factor K through careful experimental design, repeated trials, and data analysis.</li>
+          </ul>
+        </div>
+
       </div>
     </section>
   </div>
 
   <section id="education">
-    <h2>Education</h2>
-    <div class="edu-block">
+    <div class="section-head"><h2>Education</h2></div>
+    <div class="edu-card">
       <div class="edu-name">California Polytechnic State University, San Luis Obispo</div>
       <div class="edu-detail">B.S. Computer Science | Incoming Freshman, enrolling Fall 2026 | <b>Expected June 2030</b></div>
     </div>
   </section>
 
   <section id="certifications">
-    <h2>Certifications</h2>
-    <div class="cert-line"><b>Harvard CS50x</b> — Introduction to Computer Science · HarvardX/edX (Verified).</div>
-    <div class="cert-line"><b>Great Learning</b> (Verified) — AI with Python, AI Fundamentals, SQL/R/Excel for Data Science, Business Finance Foundations, JavaScript Projects, Data Science Foundations, Effective Communication, Business Process Management.</div>
-    <div class="cert-line"><b>PurpleTutor</b> — Python Programming · Verified with Distinction.</div>
-    <div class="cert-line"><b>Udemy</b> (Verified) — Finance &amp; Accounting Modeling &amp; Valuation (6.0 NASBA CPE); Intro to Data Analytics &amp; AI.</div>
-    <div class="cert-line"><b>TDRA Virtual Academy</b> (Verified) — Cloud Computing Services.</div>
+    <div class="section-head"><h2>Certifications</h2></div>
+    <div class="card-list">
+      <div class="info-card"><b>Harvard CS50x</b> — Introduction to Computer Science · HarvardX/edX (Verified).</div>
+      <div class="info-card"><b>Great Learning</b> (Verified) — AI with Python, AI Fundamentals, SQL/R/Excel for Data Science, Business Finance Foundations, JavaScript Projects, Data Science Foundations, Effective Communication, Business Process Management.</div>
+      <div class="info-card"><b>PurpleTutor</b> — Python Programming · Verified with Distinction.</div>
+      <div class="info-card"><b>Udemy</b> (Verified) — Finance &amp; Accounting Modeling &amp; Valuation (6.0 NASBA CPE); Intro to Data Analytics &amp; AI.</div>
+      <div class="info-card"><b>TDRA Virtual Academy</b> (Verified) — Cloud Computing Services.</div>
+    </div>
   </section>
 
   <section id="leadership">
-    <h2>Leadership &amp; Community</h2>
-    <div class="lead-line"><b>Founder &amp; Reviver — PIES Gavel Club:</b> Revived the school's public speaking club and organized regular meetings.</div>
-    <div class="lead-line"><b>Delegate — PIESMUN:</b> SOCHUM Committee, Madagascar simulation; applied research, problem-solving, communication, and interpersonal skills.</div>
-    <div class="lead-line"><b>Vice-Captain — U-19 Kho-Kho Team:</b> CBSE cluster/interschool competition, 3 years.</div>
-    <div class="lead-line"><b>Volunteer Tutor — Angel Xpress Foundation:</b> 40+ hours of Science &amp; Math tutoring.</div>
-    <div class="lead-line"><b>Additional community service:</b> EEG Clean UAE, SAHIM Citizen Science Cleanup, M&amp;N Brothers mentorship; 140+ verified community service hours overall.</div>
+    <div class="section-head"><h2>Leadership &amp; Community</h2></div>
+    <div class="card-list">
+      <div class="info-card"><b>Founder &amp; Reviver — PIES Gavel Club:</b> Revived the school's public speaking club and organized regular meetings.</div>
+      <div class="info-card"><b>Delegate — PIESMUN:</b> SOCHUM Committee, Madagascar simulation; applied research, problem-solving, communication, and interpersonal skills.</div>
+      <div class="info-card"><b>Vice-Captain — U-19 Kho-Kho Team:</b> CBSE cluster/interschool competition, 3 years.</div>
+      <div class="info-card"><b>Volunteer Tutor — Angel Xpress Foundation:</b> 40+ hours of Science &amp; Math tutoring.</div>
+      <div class="info-card"><b>Additional community service:</b> EEG Clean UAE, SAHIM Citizen Science Cleanup, M&amp;N Brothers mentorship; 140+ verified community service hours overall.</div>
+    </div>
   </section>
 
   <section id="honors">
-    <h2>Honors &amp; Awards</h2>
+    <div class="section-head"><h2>Honors &amp; Awards</h2></div>
     <div class="badges">
       <div class="badge highlight">SCO International Science Olympiad — Gold &amp; Outstanding Performance (2022–23)</div>
       <div class="badge">Rank 44/2,981 — SCO Olympiad (2023–24)</div>
@@ -367,31 +422,43 @@
   </section>
 
   <section id="skills">
-    <h2>Technical Skills</h2>
+    <div class="section-head"><h2>Technical Skills</h2></div>
     <div class="skills-grid">
       <div>
         <div class="skill-cat">Languages</div>
-        <div class="skill-val">Python, Java, C, SQL, JavaScript, Scratch</div>
+        <div class="pill-row">
+          <span class="pill">Python</span><span class="pill">Java</span><span class="pill">C</span><span class="pill">SQL</span><span class="pill">JavaScript</span><span class="pill">Scratch</span>
+        </div>
       </div>
       <div>
         <div class="skill-cat">Software Development</div>
-        <div class="skill-val">OOP, software design, coding standards, debugging, testing, maintenance, documentation, version control (Git)</div>
+        <div class="pill-row">
+          <span class="pill">OOP</span><span class="pill">Software Design</span><span class="pill">Coding Standards</span><span class="pill">Debugging</span><span class="pill">Testing</span><span class="pill">Documentation</span><span class="pill">Git</span>
+        </div>
       </div>
       <div>
         <div class="skill-cat">Frameworks &amp; Backend</div>
-        <div class="skill-val">Flask, SQLite, MySQL, PostgreSQL, Supabase</div>
+        <div class="pill-row">
+          <span class="pill">Flask</span><span class="pill">SQLite</span><span class="pill">MySQL</span><span class="pill">PostgreSQL</span><span class="pill">Supabase</span>
+        </div>
       </div>
       <div>
         <div class="skill-cat">Data &amp; ML</div>
-        <div class="skill-val">pandas, NumPy, scikit-learn, EDA, regression, classification, time series forecasting, relational data modeling</div>
+        <div class="pill-row">
+          <span class="pill">pandas</span><span class="pill">NumPy</span><span class="pill">scikit-learn</span><span class="pill">EDA</span><span class="pill">Regression</span><span class="pill">Classification</span><span class="pill">Time Series</span>
+        </div>
       </div>
       <div>
         <div class="skill-cat">Tools &amp; Platforms</div>
-        <div class="skill-val">Git, Linux, Excel, Access, Tableau (basic), R (basic), cloud computing</div>
+        <div class="pill-row">
+          <span class="pill">Git</span><span class="pill">Linux</span><span class="pill">Excel</span><span class="pill">Access</span><span class="pill">Tableau</span><span class="pill">R</span><span class="pill">Cloud Computing</span>
+        </div>
       </div>
       <div>
         <div class="skill-cat">Spoken Languages</div>
-        <div class="skill-val">English (Fluent), Hindi (Fluent), Gujarati (Native), Arabic (Conversational)</div>
+        <div class="pill-row">
+          <span class="pill">English — Fluent</span><span class="pill">Hindi — Fluent</span><span class="pill">Gujarati — Native</span><span class="pill">Arabic — Conversational</span>
+        </div>
       </div>
     </div>
   </section>
