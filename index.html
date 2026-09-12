@@ -4,94 +4,155 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Dhairya Prajapati — Portfolio</title>
-<meta name="description" content="Dhairya Prajapati — incoming CS student at Cal Poly San Luis Obispo, building across AI/ML, backend engineering, and data analytics.">
+<meta name="description" content="Dhairya Prajapati — incoming Computer Science student at Cal Poly San Luis Obispo, building across AI/ML, backend engineering, and data analytics.">
 <link rel="canonical" href="https://dhairya19793.github.io">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
     --navy:#0f2a4a;
-    --navy-soft:#c9d4e0;
-    --ink:#1a1a1a;
-    --ink-soft:#555;
-    --line:#e2e2e2;
-    --accent:#c97a2c;
-    --accent-bg:#fdf3e7;
-    --max:920px;
+    --navy-deep:#0a1d34;
+    --navy-soft:#a9bcd4;
+    --ink:#1c1f24;
+    --ink-soft:#585e66;
+    --line:#e4e4e2;
+    --accent:#b5672a;
+    --accent-bg:#faf1e6;
+    --max:940px;
   }
   *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
   body{
     margin:0;
     background:#fff;
     color:var(--ink);
-    font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-family:'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     font-size:16px;
-    line-height:1.6;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
   }
-  .hero{background:var(--navy); color:#fff; padding:48px 32px 40px;}
-  .hero-inner{max-width:var(--max); margin:0 auto;}
-  .hero h1{font-size:34px; font-weight:700; margin:0 0 10px;}
-  .hero .role{color:var(--navy-soft); font-size:13px; letter-spacing:.02em; margin:0 0 14px; text-transform:uppercase;}
-  .hero .school{color:var(--navy-soft); font-size:13.5px; margin:0 0 18px; text-transform:uppercase; letter-spacing:.02em;}
-  .hero .contact a{color:#fff; text-decoration:none; font-size:14px;}
-  .hero .contact a:hover{text-decoration:underline;}
-  .hero .contact .sep{color:var(--navy-soft); margin:0 6px;}
+  a{color:inherit;}
+  a:focus-visible, button:focus-visible{outline:2px solid var(--accent); outline-offset:3px;}
 
-  .wrap{max-width:var(--max); margin:0 auto; padding:0 32px 72px;}
+  .hero{
+    background:linear-gradient(160deg, var(--navy) 0%, var(--navy-deep) 100%);
+    color:#fff;
+    padding:56px 32px 44px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero::after{
+    content:"";
+    position:absolute;
+    top:-120px; right:-120px;
+    width:340px; height:340px;
+    border-radius:50%;
+    border:1px solid rgba(255,255,255,.08);
+  }
+  .hero-inner{max-width:var(--max); margin:0 auto; position:relative;}
+  .hero h1{
+    font-family:'Fraunces', Georgia, serif;
+    font-weight:600;
+    font-size:40px;
+    letter-spacing:-0.01em;
+    margin:0 0 12px;
+  }
+  .hero .role{
+    color:var(--navy-soft);
+    font-size:14.5px;
+    margin:0 0 16px;
+    font-weight:500;
+  }
+  .hero .school{
+    color:var(--navy-soft);
+    font-size:13.5px;
+    margin:0 0 22px;
+    padding-top:16px;
+    border-top:1px solid rgba(255,255,255,.14);
+    max-width:520px;
+  }
+  .hero .contact{font-size:14px;}
+  .hero .contact a{text-decoration:none; border-bottom:1px solid rgba(255,255,255,.3); padding-bottom:1px; transition:border-color .15s ease;}
+  .hero .contact a:hover{border-color:#fff;}
+  .hero .contact .sep{color:var(--navy-soft); margin:0 8px;}
+
+  .wrap{max-width:var(--max); margin:0 auto; padding:0 32px 80px;}
 
   .summary{
     background:var(--accent-bg);
-    border-left:4px solid var(--accent);
-    padding:20px 22px;
-    margin:28px 0 40px;
+    border-left:3px solid var(--accent);
+    border-radius:2px;
+    padding:22px 24px;
+    margin:32px 0 44px;
     font-size:15.5px;
-    line-height:1.65;
+    line-height:1.7;
+    color:#3a2e22;
   }
-  .summary a{color:var(--navy); font-weight:600; text-decoration:none;}
-  .summary a:hover{text-decoration:underline;}
-  .summary b{font-weight:600;}
+  .summary a{color:var(--navy); font-weight:600; text-decoration:none; border-bottom:1px solid transparent; transition:border-color .15s ease;}
+  .summary a:hover{border-color:var(--navy);}
+  .summary b{font-weight:600; color:var(--ink);}
 
   h2{
-    font-size:19px; font-weight:700; color:var(--navy);
-    margin:0 0 18px; padding-bottom:8px; border-bottom:2px solid var(--line);
+    font-family:'Fraunces', Georgia, serif;
+    font-weight:600;
+    font-size:21px;
+    color:var(--navy);
+    margin:0 0 20px;
+    padding-bottom:10px;
+    border-bottom:1px solid var(--line);
   }
 
-  .two-col{display:grid; grid-template-columns:1fr 1fr; gap:0 40px; margin-bottom:8px;}
-  @media (max-width:760px){ .two-col{grid-template-columns:1fr; gap:36px 0;} }
+  .two-col{display:grid; grid-template-columns:1fr 1fr; gap:0 44px; margin-bottom:8px;}
+  @media (max-width:760px){ .two-col{grid-template-columns:1fr; gap:40px 0;} }
 
-  section{margin-bottom:40px;}
+  section{margin-bottom:44px;}
 
-  .entry{margin-bottom:22px;}
+  .entry{margin-bottom:24px;}
   .entry:last-child{margin-bottom:0;}
   .entry-top{display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:2px 12px;}
-  .entry-title{font-weight:700; font-size:15.5px;}
-  .entry-dates{color:var(--ink-soft); font-size:13px; white-space:nowrap;}
-  .entry-org{color:var(--accent); font-size:13.5px; margin:1px 0 8px;}
-  .entry-org a{color:var(--accent); text-decoration:none;}
-  .entry-org a:hover{text-decoration:underline;}
-  ul{margin:0; padding-left:19px;}
-  li{margin-bottom:6px; font-size:14.5px;}
+  .entry-title{font-weight:600; font-size:15.5px; color:var(--ink);}
+  .entry-dates{color:var(--ink-soft); font-size:12.5px; white-space:nowrap; font-variant-numeric:tabular-nums;}
+  .entry-org{color:var(--accent); font-size:13.5px; margin:2px 0 9px; font-weight:500;}
+  .entry-org a{color:var(--accent); text-decoration:none; border-bottom:1px solid rgba(181,103,42,.35);}
+  .entry-org a:hover{border-color:var(--accent);}
+  ul{margin:0; padding-left:18px;}
+  li{margin-bottom:7px; font-size:14.5px; color:var(--ink-soft);}
   li:last-child{margin-bottom:0;}
-  li b{font-weight:600;}
+  li b{font-weight:600; color:var(--ink);}
 
-  .edu-block{margin-bottom:18px;}
+  .edu-block{margin-bottom:20px;}
   .edu-block:last-child{margin-bottom:0;}
-  .edu-name{font-weight:700; font-size:15.5px; margin-bottom:2px;}
+  .edu-name{font-weight:600; font-size:15.5px; margin-bottom:3px; color:var(--ink);}
   .edu-detail{font-size:14px; color:var(--ink-soft);}
   .edu-detail b{color:var(--ink); font-weight:600;}
 
-  .cert-line, .lead-line{margin-bottom:11px; font-size:14.5px;}
+  .cert-line, .lead-line{margin-bottom:12px; font-size:14.5px; color:var(--ink-soft);}
   .cert-line:last-child, .lead-line:last-child{margin-bottom:0;}
-  .cert-line b, .lead-line b{font-weight:700;}
+  .cert-line b, .lead-line b{font-weight:600; color:var(--ink);}
 
-  .badges{display:flex; flex-wrap:wrap; gap:8px;}
-  .badge{border:1px solid var(--line); border-radius:5px; padding:7px 12px; font-size:13px; color:var(--ink-soft); background:#fafafa;}
+  .badges{display:flex; flex-wrap:wrap; gap:9px;}
+  .badge{
+    border:1px solid var(--line);
+    border-radius:4px;
+    padding:8px 13px;
+    font-size:13px;
+    color:var(--ink-soft);
+    background:#fbfbfa;
+  }
   .badge.highlight{border-color:var(--accent); color:var(--accent); background:var(--accent-bg); font-weight:600;}
 
-  .skills-grid{display:grid; grid-template-columns:1fr 1fr; gap:22px 40px;}
+  .skills-grid{display:grid; grid-template-columns:1fr 1fr; gap:24px 44px;}
   @media (max-width:600px){ .skills-grid{grid-template-columns:1fr;} }
-  .skill-cat{font-weight:700; font-size:14px; color:var(--navy); margin-bottom:4px;}
+  .skill-cat{font-weight:600; font-size:13.5px; color:var(--navy); margin-bottom:5px; letter-spacing:.01em;}
   .skill-val{font-size:14px; color:var(--ink-soft);}
 
-  footer{text-align:center; color:var(--ink-soft); font-size:13px; padding:28px 0 8px; border-top:1px solid var(--line);}
+  footer{text-align:center; color:var(--ink-soft); font-size:12.5px; padding:32px 0 8px; border-top:1px solid var(--line);}
+
+  @media print{
+    .hero{background:var(--navy) !important; -webkit-print-color-adjust:exact; print-color-adjust:exact;}
+    a{border-bottom:none !important;}
+  }
 </style>
 </head>
 <body>
@@ -100,10 +161,10 @@
   <div class="hero-inner">
     <h1>Dhairya Prajapati</h1>
     <p class="role">Software Engineering · Applied AI &amp; Machine Learning · Backend Development · Data Analytics</p>
-    <p class="school">Cal Poly, San Luis Obispo &nbsp;|&nbsp; B.S. Computer Science &nbsp;|&nbsp; Expected June 2030</p>
     <p class="contact">
       <a href="mailto:dhairya2277@gmail.com">dhairya2277@gmail.com</a><span class="sep">·</span><a href="https://www.linkedin.com/in/dhairya-prajapati-082a08357/" target="_blank" rel="noopener">LinkedIn</a><span class="sep">·</span><a href="https://github.com/Dhairya19793" target="_blank" rel="noopener">GitHub</a><span class="sep">·</span><a href="https://dhairya19793.github.io" target="_blank" rel="noopener">dhairya19793.github.io</a>
     </p>
+    <p class="school">Cal Poly, San Luis Obispo &nbsp;·&nbsp; B.S. Computer Science &nbsp;·&nbsp; Expected June 2030</p>
   </div>
 </div>
 
