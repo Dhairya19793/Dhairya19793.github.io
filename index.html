@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dhairya Prajapati — Portfolio</title>
-<meta name="description" content="Dhairya Prajapati — Computer Science student at Cal Poly San Luis Obispo, building across AI/ML, backend engineering, and data analytics.">
+<title>Dhairya Prajapati | Portfolio</title>
+<meta name="description" content="Dhairya Prajapati, first-year Computer Science student at Cal Poly San Luis Obispo, building across AI/ML, backend engineering, and data analytics.">
 <link rel="canonical" href="https://dhairya19793.github.io">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,16 +12,22 @@
 <style>
   :root{
     --navy:#0f2a4a;
-    --navy-deep:#0a1d34;
+    --navy-deep:#081626;
+    --navy-mid:#16365e;
     --navy-soft:#a9bcd4;
     --ink:#1c1f24;
     --ink-soft:#585e66;
     --ink-faint:#8a8f96;
     --line:#e6e6e4;
     --accent:#b5672a;
+    --accent-2:#c78a1f;
     --accent-bg:#faf1e6;
     --card-bg:#fafafa;
-    --max:980px;
+    --good:#2f9e63;
+    --shadow-sm:0 1px 2px rgba(15,42,74,.06), 0 1px 1px rgba(15,42,74,.04);
+    --shadow-md:0 10px 24px -8px rgba(15,42,74,.18), 0 2px 6px rgba(15,42,74,.06);
+    --radius:10px;
+    --max:1040px;
   }
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
@@ -36,56 +42,130 @@
   }
   a{color:inherit;}
   a:focus-visible, button:focus-visible{outline:2px solid var(--accent); outline-offset:3px;}
+  ::selection{background:var(--accent-2); color:#fff;}
 
   /* ---- Nav ---- */
   .nav{
-    position:sticky; top:0; z-index:10;
-    background:rgba(255,255,255,.92);
-    backdrop-filter:blur(8px);
+    position:sticky; top:0; z-index:20;
+    background:rgba(255,255,255,.88);
+    backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
     border-bottom:1px solid var(--line);
+    transition:box-shadow .25s ease, border-color .25s ease;
   }
+  .nav.scrolled{box-shadow:0 4px 18px -8px rgba(15,42,74,.18); border-bottom-color:transparent;}
   .nav-inner{
     max-width:var(--max); margin:0 auto; padding:14px 32px;
     display:flex; align-items:center; justify-content:space-between;
     gap:16px; flex-wrap:wrap;
   }
-  .nav-name{font-family:'Fraunces', Georgia, serif; font-weight:600; font-size:16px; color:var(--navy);}
-  .nav-links{display:flex; gap:20px; flex-wrap:wrap;}
+  .nav-name{
+    font-family:'Fraunces', Georgia, serif; font-weight:600; font-size:16.5px; color:var(--navy);
+    display:flex; align-items:center; gap:9px; text-decoration:none;
+  }
+  .nav-mark{
+    width:26px; height:26px; border-radius:8px; flex:none;
+    background:linear-gradient(145deg, var(--navy) 0%, var(--navy-mid) 100%);
+    color:#fff; font-size:11px; font-weight:700; letter-spacing:.02em;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Inter', sans-serif;
+  }
+  .nav-links{display:flex; gap:4px; flex-wrap:wrap;}
   .nav-links a{
     font-size:13.5px; color:var(--ink-soft); text-decoration:none; font-weight:500;
-    padding:4px 0; border-bottom:1.5px solid transparent; transition:border-color .15s ease, color .15s ease;
+    padding:7px 11px; border-radius:7px; transition:background .15s ease, color .15s ease;
   }
-  .nav-links a:hover{color:var(--navy); border-color:var(--accent);}
-  @media (max-width:640px){ .nav-links{display:none;} }
+  .nav-links a:hover{color:var(--navy); background:var(--accent-bg);}
+  .nav-links a.active{color:var(--navy); background:var(--accent-bg); font-weight:600;}
+  @media (max-width:760px){ .nav-links{display:none;} }
 
   /* ---- Hero ---- */
   .hero{
-    background:linear-gradient(160deg, var(--navy) 0%, var(--navy-deep) 100%);
+    background:
+      radial-gradient(640px 420px at 88% -10%, rgba(199,138,31,.22), transparent 60%),
+      radial-gradient(520px 360px at 6% 110%, rgba(169,188,212,.16), transparent 60%),
+      linear-gradient(160deg, var(--navy) 0%, var(--navy-deep) 100%);
     color:#fff;
-    padding:56px 32px 44px;
+    padding:64px 32px 52px;
     position:relative;
     overflow:hidden;
   }
   .hero::after{
     content:"";
-    position:absolute; top:-120px; right:-120px;
-    width:340px; height:340px; border-radius:50%;
+    position:absolute; top:-130px; right:-110px;
+    width:360px; height:360px; border-radius:50%;
     border:1px solid rgba(255,255,255,.08);
   }
+  .hero::before{
+    content:"";
+    position:absolute; bottom:-160px; left:-90px;
+    width:300px; height:300px; border-radius:50%;
+    border:1px solid rgba(255,255,255,.06);
+  }
   .hero-inner{max-width:var(--max); margin:0 auto; position:relative;}
+  .hero-top{display:flex; align-items:center; gap:22px; flex-wrap:wrap; margin-bottom:22px;}
+  .avatar{
+    width:72px; height:72px; border-radius:20px; flex:none;
+    background:linear-gradient(150deg, var(--accent-2) 0%, var(--accent) 100%);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Fraunces', Georgia, serif; font-weight:600; font-size:26px; color:#fff;
+    box-shadow:0 10px 28px -8px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.25);
+  }
+  .eyebrow{
+    text-transform:uppercase; letter-spacing:.11em; font-size:11.5px; font-weight:600;
+    color:var(--accent-2); margin:0 0 6px;
+  }
   .hero h1{
     font-family:'Fraunces', Georgia, serif; font-weight:600;
-    font-size:40px; letter-spacing:-0.01em; margin:0 0 12px;
+    font-size:38px; letter-spacing:-0.01em; margin:0 0 6px; line-height:1.1;
   }
-  .hero .role{color:var(--navy-soft); font-size:14.5px; margin:0 0 16px; font-weight:500;}
-  .hero .school{
-    color:var(--navy-soft); font-size:13.5px; margin:0 0 22px;
-    padding-top:16px; border-top:1px solid rgba(255,255,255,.14); max-width:560px;
+  .hero .role{color:var(--navy-soft); font-size:14.5px; margin:0; font-weight:500;}
+
+  .status-badge{
+    display:inline-flex; align-items:center; gap:8px;
+    background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.16);
+    padding:7px 14px 7px 11px; border-radius:999px; font-size:13px; font-weight:500;
+    margin:18px 0 20px; color:#f2f5f9;
   }
-  .hero .contact{font-size:14px;}
-  .hero .contact a{text-decoration:none; border-bottom:1px solid rgba(255,255,255,.3); padding-bottom:1px; transition:border-color .15s ease;}
-  .hero .contact a:hover{border-color:#fff;}
-  .hero .contact .sep{color:var(--navy-soft); margin:0 8px;}
+  .status-dot{
+    width:8px; height:8px; border-radius:50%; background:var(--good); flex:none;
+    box-shadow:0 0 0 3px rgba(47,158,99,.25);
+    animation:pulse 2.2s ease-in-out infinite;
+  }
+  @keyframes pulse{
+    0%,100%{box-shadow:0 0 0 3px rgba(47,158,99,.25);}
+    50%{box-shadow:0 0 0 6px rgba(47,158,99,.1);}
+  }
+
+  .hero-contact{display:flex; flex-wrap:wrap; gap:9px; margin-bottom:22px;}
+  .chip{
+    display:inline-flex; align-items:center; gap:7px;
+    background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.14);
+    color:#eef2f7; text-decoration:none; font-size:13.5px; font-weight:500;
+    padding:8px 13px; border-radius:9px; transition:background .18s ease, border-color .18s ease, transform .18s ease;
+  }
+  .chip:hover{background:rgba(255,255,255,.14); border-color:rgba(255,255,255,.3); transform:translateY(-1px);}
+  .chip .ic{width:15px; height:15px; flex:none; opacity:.85;}
+
+  .hero-cta{display:flex; flex-wrap:wrap; gap:12px; margin-bottom:26px;}
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    font-size:13.5px; font-weight:600; text-decoration:none;
+    padding:11px 20px; border-radius:9px; transition:transform .18s ease, box-shadow .18s ease, background .18s ease;
+  }
+  .btn-solid{
+    background:linear-gradient(135deg, var(--accent-2), var(--accent));
+    color:#fff; box-shadow:0 8px 20px -6px rgba(181,103,42,.55);
+  }
+  .btn-solid:hover{transform:translateY(-2px); box-shadow:0 12px 26px -6px rgba(181,103,42,.65);}
+  .btn-ghost{
+    background:rgba(255,255,255,.04); color:#fff; border:1px solid rgba(255,255,255,.22);
+  }
+  .btn-ghost:hover{background:rgba(255,255,255,.1); transform:translateY(-2px);}
+
+  .school-line{
+    color:var(--navy-soft); font-size:13.5px; margin:0;
+    padding-top:18px; border-top:1px solid rgba(255,255,255,.14); max-width:640px;
+  }
 
   .wrap{max-width:var(--max); margin:0 auto; padding:0 32px 80px;}
 
@@ -93,37 +173,58 @@
   .summary{
     background:var(--accent-bg);
     border-left:3px solid var(--accent);
-    border-radius:2px;
-    padding:22px 24px;
-    margin:32px 0 48px;
-    font-size:15.5px; line-height:1.7; color:#3a2e22;
+    border-radius:2px 10px 10px 2px;
+    padding:24px 26px;
+    margin:36px 0 52px;
+    font-size:15.5px; line-height:1.72; color:#3a2e22;
+    box-shadow:var(--shadow-sm);
   }
   .summary a{color:var(--navy); font-weight:600; text-decoration:none; border-bottom:1px solid transparent; transition:border-color .15s ease;}
   .summary a:hover{border-color:var(--navy);}
   .summary b{font-weight:600; color:var(--ink);}
 
   /* ---- Section headers ---- */
-  .section-head{display:flex; align-items:baseline; justify-content:space-between; margin-bottom:22px; padding-bottom:10px; border-bottom:1px solid var(--line);}
-  h2{
-    font-family:'Fraunces', Georgia, serif; font-weight:600; font-size:22px; color:var(--navy); margin:0;
+  .section-head{display:flex; align-items:baseline; justify-content:space-between; margin-bottom:24px; padding-bottom:12px; border-bottom:1px solid var(--line);}
+  .section-head h2{display:flex; align-items:center; gap:11px;}
+  .section-head h2::before{
+    content:""; display:block; width:9px; height:9px; border-radius:3px;
+    background:linear-gradient(135deg, var(--accent-2), var(--accent));
+    flex:none;
   }
-  .section-count{font-size:12.5px; color:var(--ink-faint); font-weight:500;}
+  h2{
+    font-family:'Fraunces', Georgia, serif; font-weight:600; font-size:23px; color:var(--navy); margin:0;
+  }
+  .section-count{
+    font-size:11.5px; color:var(--accent); font-weight:600; letter-spacing:.02em;
+    background:var(--accent-bg); padding:4px 11px; border-radius:999px; white-space:nowrap;
+  }
 
   .two-col{display:grid; grid-template-columns:1fr 1fr; gap:0 48px; margin-bottom:8px;}
   @media (max-width:760px){ .two-col{grid-template-columns:1fr; gap:44px 0;} }
 
-  section{margin-bottom:52px;}
-  section:target{scroll-margin-top:72px;}
+  section{margin-bottom:56px; opacity:0; transform:translateY(14px); transition:opacity .6s ease, transform .6s ease;}
+  section.in-view{opacity:1; transform:translateY(0);}
+  section:target{scroll-margin-top:84px;}
+  @media (prefers-reduced-motion: reduce){
+    section{opacity:1; transform:none; transition:none;}
+    .status-dot{animation:none;}
+  }
 
   /* ---- Timeline entries ---- */
-  .timeline{position:relative; padding-left:18px; border-left:2px solid var(--line);}
-  .entry{position:relative; margin-bottom:26px; padding-left:18px;}
+  .timeline{position:relative; padding-left:20px; border-left:2px solid var(--line);}
+  .entry{
+    position:relative; margin-bottom:10px; padding:14px 16px 14px 18px;
+    border-radius:10px; transition:background .18s ease, box-shadow .18s ease, transform .18s ease;
+  }
+  .entry:hover{background:var(--card-bg); box-shadow:var(--shadow-sm); transform:translateX(2px);}
   .entry:last-child{margin-bottom:0;}
   .entry::before{
-    content:""; position:absolute; left:-27px; top:5px;
-    width:8px; height:8px; border-radius:50%;
+    content:""; position:absolute; left:-29px; top:19px;
+    width:9px; height:9px; border-radius:50%;
     background:var(--accent); border:2px solid #fff; box-shadow:0 0 0 1px var(--accent);
+    transition:box-shadow .18s ease;
   }
+  .entry:hover::before{box-shadow:0 0 0 4px rgba(181,103,42,.18);}
   .entry-top{display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:2px 12px;}
   .entry-title{font-weight:600; font-size:15.5px; color:var(--ink);}
   .entry-dates{color:var(--ink-faint); font-size:12px; white-space:nowrap; font-variant-numeric:tabular-nums; font-weight:500;}
@@ -137,53 +238,98 @@
 
   /* ---- Education ---- */
   .edu-card{
-    background:var(--card-bg); border:1px solid var(--line); border-radius:8px;
-    padding:20px 22px;
+    background:var(--card-bg); border:1px solid var(--line); border-radius:var(--radius);
+    padding:22px 24px; transition:box-shadow .18s ease, transform .18s ease;
   }
-  .edu-name{font-weight:600; font-size:15.5px; margin-bottom:3px; color:var(--ink);}
+  .edu-card:hover{box-shadow:var(--shadow-md); transform:translateY(-2px);}
+  .edu-name{font-weight:600; font-size:15.5px; margin-bottom:5px; color:var(--ink);}
   .edu-detail{font-size:14px; color:var(--ink-soft);}
   .edu-detail b{color:var(--ink); font-weight:600;}
 
   /* ---- Certifications / Leadership as cards ---- */
   .card-list{display:grid; gap:12px;}
   .info-card{
-    background:var(--card-bg); border:1px solid var(--line); border-radius:8px;
-    padding:14px 18px; font-size:14.5px; color:var(--ink-soft);
+    background:var(--card-bg); border:1px solid var(--line); border-radius:var(--radius);
+    padding:15px 19px; font-size:14.5px; color:var(--ink-soft);
+    transition:box-shadow .18s ease, transform .18s ease, border-color .18s ease;
   }
+  .info-card:hover{box-shadow:var(--shadow-md); transform:translateY(-2px); border-color:rgba(181,103,42,.3);}
   .info-card b{font-weight:600; color:var(--ink);}
 
   /* ---- Honors badges ---- */
   .badges{display:flex; flex-wrap:wrap; gap:9px;}
   .badge{
+    display:inline-flex; align-items:center; gap:7px;
     border:1px solid var(--line); border-radius:20px;
-    padding:8px 16px; font-size:13px; color:var(--ink-soft); background:#fbfbfa;
+    padding:9px 16px; font-size:13px; color:var(--ink-soft); background:#fbfbfa;
+    transition:box-shadow .18s ease, transform .18s ease, border-color .18s ease;
   }
+  .badge:hover{box-shadow:var(--shadow-sm); transform:translateY(-1px); border-color:rgba(181,103,42,.35);}
   .badge.highlight{border-color:var(--accent); color:var(--accent); background:var(--accent-bg); font-weight:600;}
+  .badge .ic{width:13px; height:13px; flex:none;}
 
   /* ---- Skills ---- */
-  .skills-grid{display:grid; grid-template-columns:1fr 1fr; gap:26px 48px;}
+  .skills-grid{display:grid; grid-template-columns:1fr 1fr; gap:28px 48px;}
   @media (max-width:600px){ .skills-grid{grid-template-columns:1fr;} }
-  .skill-cat{font-weight:600; font-size:12.5px; color:var(--navy); margin-bottom:9px; letter-spacing:.03em; text-transform:uppercase;}
+  .skill-cat{
+    font-weight:600; font-size:12px; color:var(--navy); margin-bottom:10px; letter-spacing:.06em; text-transform:uppercase;
+    display:flex; align-items:center; gap:7px;
+  }
+  .skill-cat::before{content:""; width:5px; height:5px; border-radius:50%; background:var(--accent);}
   .pill-row{display:flex; flex-wrap:wrap; gap:7px;}
   .pill{
     font-size:13px; color:var(--ink-soft); background:var(--card-bg);
-    border:1px solid var(--line); border-radius:5px; padding:5px 10px;
+    border:1px solid var(--line); border-radius:6px; padding:5.5px 11px;
+    transition:background .15s ease, color .15s ease, border-color .15s ease, transform .15s ease;
   }
+  .pill:hover{background:var(--accent-bg); color:var(--accent); border-color:rgba(181,103,42,.3); transform:translateY(-1px);}
 
-  footer{text-align:center; color:var(--ink-faint); font-size:12.5px; padding:32px 0 8px; border-top:1px solid var(--line);}
+  footer{
+    display:flex; flex-direction:column; align-items:center; gap:14px;
+    text-align:center; color:var(--ink-faint); font-size:12.5px; padding:36px 0 10px; border-top:1px solid var(--line);
+  }
+  .footer-links{display:flex; gap:10px;}
+  .footer-links a{
+    width:34px; height:34px; border-radius:9px; background:var(--card-bg); border:1px solid var(--line);
+    display:flex; align-items:center; justify-content:center; color:var(--ink-soft);
+    transition:background .15s ease, color .15s ease, transform .15s ease;
+  }
+  .footer-links a:hover{background:var(--navy); color:#fff; transform:translateY(-2px);}
+  .footer-links .ic{width:16px; height:16px;}
 
   @media print{
     .nav{display:none;}
     .hero{background:var(--navy) !important; -webkit-print-color-adjust:exact; print-color-adjust:exact;}
     a{border-bottom:none !important;}
+    section{opacity:1 !important; transform:none !important;}
   }
 </style>
 </head>
 <body>
 
-<div class="nav">
+<svg style="display:none" aria-hidden="true">
+  <defs>
+    <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
+    </symbol>
+    <symbol id="i-linkedin" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.6v1.7h.05c.5-.95 1.75-1.95 3.6-1.95 3.85 0 4.55 2.5 4.55 5.75V21h-4v-5.3c0-1.25-.02-2.85-1.75-2.85-1.75 0-2 1.35-2 2.75V21H9z"/>
+    </symbol>
+    <symbol id="i-github" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.25.79-.56 0-.27-.01-1.17-.02-2.12-3.2.7-3.88-1.36-3.88-1.36-.53-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.71.08-.71 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.23-1.28-5.23-5.68 0-1.25.45-2.28 1.19-3.08-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.05 11.05 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.64 1.59.24 2.76.12 3.05.74.8 1.19 1.83 1.19 3.08 0 4.41-2.69 5.39-5.25 5.67.41.36.78 1.07.78 2.16 0 1.56-.01 2.82-.01 3.2 0 .31.21.67.8.56A10.52 10.52 0 0 0 23.5 12C23.5 5.73 18.27.5 12 .5z"/>
+    </symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+    </symbol>
+    <symbol id="i-star" viewBox="0 0 24 24" fill="currentColor">
+      <polygon points="12 2 15 8.5 22 9.3 17 14.1 18.2 21 12 17.6 5.8 21 7 14.1 2 9.3 9 8.5 12 2"/>
+    </symbol>
+  </defs>
+</svg>
+
+<div class="nav" id="nav">
   <div class="nav-inner">
-    <div class="nav-name">Dhairya Prajapati</div>
+    <a href="#" class="nav-name"><span class="nav-mark">DP</span>Dhairya Prajapati</a>
     <div class="nav-links">
       <a href="#projects">Projects</a>
       <a href="#experience">Experience</a>
@@ -198,57 +344,90 @@
 
 <div class="hero">
   <div class="hero-inner">
-    <h1>Dhairya Prajapati</h1>
-    <p class="role">Software Engineering · Applied AI &amp; Machine Learning · Backend Development · Data Analytics</p>
-    <p class="contact">
-      <a href="mailto:dhairya2277@gmail.com">dhairya2277@gmail.com</a><span class="sep">·</span><a href="https://www.linkedin.com/in/dhairya-prajapati-082a08357/" target="_blank" rel="noopener">LinkedIn</a><span class="sep">·</span><a href="https://github.com/Dhairya19793" target="_blank" rel="noopener">GitHub</a><span class="sep">·</span><a href="https://dhairya19793.github.io" target="_blank" rel="noopener">dhairya19793.github.io</a>
-    </p>
-    <p class="school">Cal Poly, San Luis Obispo &nbsp;·&nbsp; B.S. Computer Science &nbsp;·&nbsp; Expected June 2030 &nbsp;·&nbsp; CPT/F-1 Eligible</p>
+    <div class="hero-top">
+      <div class="avatar">DP</div>
+      <div>
+        <p class="eyebrow">Computer Science · Cal Poly SLO</p>
+        <h1>Dhairya Prajapati</h1>
+        <p class="role">Software Engineering · Applied AI &amp; Machine Learning · Backend Development · Data Analytics</p>
+      </div>
+    </div>
+
+    <div class="status-badge"><span class="status-dot"></span>Available Summer 2027 &nbsp;·&nbsp; F-1 Student</div>
+
+    <div class="hero-contact">
+      <a class="chip" href="mailto:dhairya2277@gmail.com"><svg class="ic"><use href="#i-mail"/></svg>dhairya2277@gmail.com</a>
+      <a class="chip" href="https://www.linkedin.com/in/dhairya-prajapati-082a08357/" target="_blank" rel="noopener"><svg class="ic"><use href="#i-linkedin"/></svg>LinkedIn</a>
+      <a class="chip" href="https://github.com/Dhairya19793" target="_blank" rel="noopener"><svg class="ic"><use href="#i-github"/></svg>GitHub</a>
+      <a class="chip" href="https://dhairya19793.github.io" target="_blank" rel="noopener"><svg class="ic"><use href="#i-globe"/></svg>dhairya19793.github.io</a>
+    </div>
+
+    <div class="hero-cta">
+      <a class="btn btn-solid" href="mailto:dhairya2277@gmail.com">Get in Touch</a>
+      <a class="btn btn-ghost" href="https://www.linkedin.com/in/dhairya-prajapati-082a08357/" target="_blank" rel="noopener">Connect on LinkedIn</a>
+    </div>
+
+    <p class="school-line">Cal Poly, San Luis Obispo &nbsp;·&nbsp; B.S. Computer Science &nbsp;·&nbsp; First-Year Computer Science Student</p>
   </div>
 </div>
 
 <div class="wrap">
 
   <div class="summary">
-    Computer Science student at <b>Cal Poly San Luis Obispo (Fall 2026)</b> building across software engineering, applied machine learning, data analytics, and backend systems. <b>Six internships</b> across healthcare AI, quantitative research, finance, clinical operations, and backend development, plus a published research paper on household energy analytics. Shipped <a href="#projects">StudyBuddy</a>, a full-stack Flask/Supabase platform, at the Cal Poly CodeBox Hackathon, and <b>Jarvis</b>, an offline AI voice assistant. Hands-on experience spans India, Singapore, the UK, and the UAE.
+    First-year Computer Science student at <b>Cal Poly San Luis Obispo</b>, building across software engineering, applied machine learning, data analytics, and backend systems. Experience spans healthcare AI, quantitative research, finance, clinical operations, and backend development, plus a published research paper on household energy analytics. Shipped <a href="#projects">StudyBuddy</a>, a full-stack Flask/Supabase platform, at the Cal Poly CodeBox Hackathon, and <b>Jarvis</b>, an offline AI voice assistant. Hands-on experience across India, Singapore, and the UAE, with remote collaboration on UK-headquartered teams.
   </div>
 
-  <div class="two-col">
-    <section id="projects">
-      <div class="section-head">
-        <h2>Projects</h2>
-        <span class="section-count">5 builds</span>
-      </div>
+  <section id="projects">
+    <div class="section-head">
+      <h2>Projects</h2>
+      <span class="section-count">5 builds</span>
+    </div>
+    <div class="two-col">
       <div class="timeline">
 
         <div class="entry">
           <div class="entry-top">
-            <div class="entry-title">StudyBuddy — Cal Poly CodeBox Hackathon</div>
-            <div class="entry-dates">2026</div>
+            <div class="entry-title">StudyBuddy, Cal Poly CodeBox Hackathon</div>
+            <div class="entry-dates">Sep 2026</div>
           </div>
           <div class="entry-org">Flask · Supabase · <a href="https://studybuddy-calpoly.bolt.host/" target="_blank" rel="noopener">Live Demo</a></div>
           <ul>
             <li>Built a full-stack <b>study coordination platform</b> that matches students into private Study Pods by course, topic, availability, and study style, using Flask for matching logic and Supabase for real-time, privacy-protected data.</li>
-            <li>Presented at the Cal Poly CodeBox Hackathon; shipped a deployed web app spanning Course Hubs, Study Requests, and a Solo Workspace for independent task tracking.</li>
+            <li>Presented at the Cal Poly CodeBox Hackathon. Shipped a deployed web app spanning Course Hubs, Study Requests, and a Solo Workspace for independent task tracking.</li>
           </ul>
         </div>
 
         <div class="entry">
           <div class="entry-top">
-            <div class="entry-title">Jarvis — Offline AI Voice Assistant</div>
-            <div class="entry-dates">2026</div>
+            <div class="entry-title">Jarvis, Offline AI Voice Assistant</div>
+            <div class="entry-dates">May 2026</div>
           </div>
           <div class="entry-org">Python · Whisper · Ollama (Llama 3)</div>
           <ul>
-            <li>Built an <b>offline voice assistant</b> integrating speech recognition, conversational AI, and text-to-speech, processed locally for privacy and responsiveness.</li>
+            <li>Built an <b>offline voice assistant</b> integrating speech recognition, a locally run Llama 3 model, and text-to-speech, with zero cloud dependency for privacy and responsiveness.</li>
             <li>Iterated through multiple development/testing cycles for reliable, <b>privacy-preserving local performance</b>.</li>
           </ul>
         </div>
 
         <div class="entry">
           <div class="entry-top">
-            <div class="entry-title">Study Planner — CS50x Capstone (HarvardX)</div>
-            <div class="entry-dates">2025</div>
+            <div class="entry-title">Food Ordering Portal</div>
+            <div class="entry-dates">Dec 2025</div>
+          </div>
+          <div class="entry-org">Python · MySQL</div>
+          <ul>
+            <li>Defined system requirements for admin/customer workflows, then designed a <b>relational database schema</b> and built a console-based CRUD application to meet them.</li>
+            <li>Applied parameterized queries and consistent <b>coding standards</b> to ensure data integrity throughout.</li>
+          </ul>
+        </div>
+
+      </div>
+      <div class="timeline">
+
+        <div class="entry">
+          <div class="entry-top">
+            <div class="entry-title">Study Planner, CS50x Capstone (HarvardX)</div>
+            <div class="entry-dates">Jul 2025</div>
           </div>
           <div class="entry-org">Python · Flask · SQLite</div>
           <ul>
@@ -259,20 +438,8 @@
 
         <div class="entry">
           <div class="entry-top">
-            <div class="entry-title">Food Ordering Portal</div>
-            <div class="entry-dates">2025</div>
-          </div>
-          <div class="entry-org">Python · MySQL</div>
-          <ul>
-            <li>Defined system requirements for admin/customer workflows, then designed a <b>relational database schema</b> and built a console-based CRUD application to meet them.</li>
-            <li>Applied parameterized queries and consistent <b>coding standards</b> to ensure data integrity throughout.</li>
-          </ul>
-        </div>
-
-        <div class="entry">
-          <div class="entry-top">
             <div class="entry-title">Tangent Galvanometer Investigation</div>
-            <div class="entry-dates">—</div>
+            <div class="entry-dates"></div>
           </div>
           <div class="entry-org">Experimental Physics</div>
           <ul>
@@ -281,8 +448,8 @@
         </div>
 
       </div>
-    </section>
-  </div>
+    </div>
+  </section>
 
   <section id="experience">
       <div class="section-head">
@@ -293,49 +460,49 @@
 
         <div class="entry">
           <div class="entry-top">
-            <div class="entry-title">AI in Healthcare Intern</div>
-            <div class="entry-dates">2026</div>
+            <div class="entry-title">AI in Healthcare Research Intern</div>
+            <div class="entry-dates">Jun 2026 - Jul 2026</div>
           </div>
-          <div class="entry-org">Pharmint Pte Ltd · Remote – Singapore</div>
+          <div class="entry-org">Pharmint Pte Ltd · Remote (Singapore)</div>
           <ul>
-            <li>Completed a 6-week internship in <b>predictive modeling and biomarker discovery</b> in cancer transcriptomics, mentored by a Mayo Clinic-affiliated computational biologist.</li>
+            <li>Completed a 6-week internship in <b>predictive modeling and biomarker discovery</b> in cancer transcriptomics, mentored by a computational biologist.</li>
             <li>Engineered <b>differential gene expression analysis</b> (log2FC, adjusted p-values) and trained <b>ML classifiers</b> (Logistic Regression, Random Forest) to identify hypoxia-responsive gene signatures in breast cancer transcriptomics data (TCGA-BRCA, GEO).</li>
           </ul>
         </div>
 
         <div class="entry">
           <div class="entry-top">
-            <div class="entry-title">Quantitative Analysis Research Mentee</div>
-            <div class="entry-dates">2024–2025</div>
-          </div>
-          <div class="entry-org">CSPIT, CHARUSAT · Remote – India</div>
-          <ul>
-            <li>Conducted <b>stock trend analysis</b> in Python (pandas, statsmodels) using regression, moving averages, and time series methods under faculty mentorship.</li>
-            <li>Presented findings and visualizations, summarizing trend patterns and <b>forecasting insights</b>.</li>
-          </ul>
-        </div>
-
-        <div class="entry">
-          <div class="entry-top">
             <div class="entry-title">Research Author</div>
-            <div class="entry-dates">2024</div>
+            <div class="entry-dates">Jun 2025</div>
           </div>
           <div class="entry-org">Researchory.org · Remote Research Program</div>
           <ul>
-            <li>Authored a research paper on <b>household energy analytics</b>, applying exploratory data analysis (EDA) to identify usage patterns.</li>
-            <li>Documented methodology and efficiency recommendations for publication, strengthening <b>technical writing</b> and data storytelling skills.</li>
+            <li>Authored a <b>published research paper</b> on household energy analytics, applying exploratory data analysis (EDA) to identify usage patterns and efficiency opportunities.</li>
+            <li>Documented methodology and data-driven efficiency recommendations for publication, strengthening <b>technical writing</b> and data storytelling skills.</li>
           </ul>
         </div>
 
         <div class="entry">
           <div class="entry-top">
-            <div class="entry-title">Data Science Simulation — Customer Analytics</div>
-            <div class="entry-dates">2025</div>
+            <div class="entry-title">Research Mentee, Quantitative Analysis</div>
+            <div class="entry-dates">Mar 2025 - Apr 2025</div>
           </div>
-          <div class="entry-org">British Airways (Forage) · Virtual Experience Program</div>
+          <div class="entry-org">CSPIT, CHARUSAT · Remote (India)</div>
           <ul>
-            <li>Completed an industry-assessed virtual program simulating a business analytics workflow, including <b>web scraping and customer profiling</b> in Python.</li>
-            <li>Built <b>UX visualizations</b> to communicate customer insights through a structured project workflow.</li>
+            <li>Conducted <b>stock trend analysis</b> in Python (pandas, statsmodels) using regression, moving averages, and time series methods under faculty mentorship.</li>
+            <li>Presented findings and visualizations to a faculty mentor, summarizing trend patterns and <b>forecasting insights</b> for further discussion.</li>
+          </ul>
+        </div>
+
+        <div class="entry">
+          <div class="entry-top">
+            <div class="entry-title">Data Science Simulation, Customer Analytics</div>
+            <div class="entry-dates">Mar 2025</div>
+          </div>
+          <div class="entry-org">British Airways (Forage) · Remote</div>
+          <ul>
+            <li>Completed a virtual job simulation, applying <b>web scraping and customer profiling</b> in Python to segment customers for personalized marketing decisions.</li>
+            <li>Built <b>UX visualizations</b> to communicate customer insights, following a structured project workflow from data collection through presentation.</li>
           </ul>
         </div>
 
@@ -366,12 +533,12 @@
         <div class="entry">
           <div class="entry-top">
             <div class="entry-title">Python Intern</div>
-            <div class="entry-dates">2023</div>
+            <div class="entry-dates">Jul 2023 - Aug 2023</div>
           </div>
-          <div class="entry-org">BizzAppDev Systems Pvt. Ltd. · Remote – India</div>
+          <div class="entry-org">BizzAppDev Systems Pvt. Ltd. · Remote (India)</div>
           <ul>
-            <li>Contributed to backend development tasks using <b>Python, PostgreSQL, and XML</b> in a live development environment.</li>
-            <li>Practiced coding standards and version-controlled workflows on Linux, supporting ongoing <b>software maintenance</b> tasks.</li>
+            <li>Contributed <b>backend modules</b> to a live Python/PostgreSQL/XML codebase, following modular design and coding standards.</li>
+            <li>Debugged and maintained backend modules using Git-based <b>version control</b> on Linux, supporting documentation and software maintenance.</li>
           </ul>
         </div>
 
@@ -382,42 +549,43 @@
     <div class="section-head"><h2>Education</h2></div>
     <div class="edu-card">
       <div class="edu-name">California Polytechnic State University, San Luis Obispo</div>
-      <div class="edu-detail">B.S. Computer Science | <b>Expected June 2030</b></div>
+      <div class="edu-detail">B.S. Computer Science | First-Year Computer Science Student | <b>Sep 2026 - Jun 2030</b></div>
+      <div class="edu-detail" style="margin-top:6px; font-style:italic;">Pre-College Coursework (CBSE, India/UAE): Computer Science, Mathematics, Physics, Chemistry, English | Harvard CS50x: Introduction to Computer Science</div>
     </div>
   </section>
 
   <section id="certifications">
     <div class="section-head"><h2>Certifications</h2></div>
     <div class="card-list">
-      <div class="info-card"><b>Harvard CS50x</b> — Introduction to Computer Science · HarvardX/edX (Verified).</div>
-      <div class="info-card"><b>Great Learning</b> (Verified) — AI with Python, AI Fundamentals, SQL/R/Excel for Data Science, Business Finance Foundations, JavaScript Projects, Data Science Foundations, Effective Communication, Business Process Management.</div>
-      <div class="info-card"><b>PurpleTutor</b> — Python Programming · Verified with Distinction.</div>
-      <div class="info-card"><b>Udemy</b> (Verified) — Finance &amp; Accounting Modeling &amp; Valuation (6.0 NASBA CPE); Intro to Data Analytics &amp; AI.</div>
-      <div class="info-card"><b>TDRA Virtual Academy</b> (Verified) — Cloud Computing Services.</div>
+      <div class="info-card"><b>Harvard CS50x</b>: Introduction to Computer Science, HarvardX/edX (Verified) · Jul 2025.</div>
+      <div class="info-card"><b>Great Learning</b> (Verified): AI with Python, AI Fundamentals, SQL/R/Excel for Data Science, Business Finance Foundations, JavaScript Projects, Data Science Foundations, Effective Communication, Business Process Management · Apr - May 2025.</div>
+      <div class="info-card"><b>Udemy</b> (Verified): Intro to Data Analytics &amp; AI and Finance &amp; Accounting Modeling &amp; Valuation (6.0 NASBA CPE) · Mar 2025.</div>
+      <div class="info-card"><b>PurpleTutor</b>: Python Programming, Verified with Distinction · Jan 2022.</div>
+      <div class="info-card"><b>TDRA Virtual Academy</b> (Verified): Cloud Computing Services.</div>
     </div>
   </section>
 
   <section id="leadership">
     <div class="section-head"><h2>Leadership &amp; Community</h2></div>
     <div class="card-list">
-      <div class="info-card"><b>Founder &amp; Reviver — PIES Gavel Club:</b> Revived the school's public speaking club and organized regular meetings.</div>
-      <div class="info-card"><b>Delegate — PIESMUN:</b> SOCHUM Committee, Madagascar simulation; applied research, problem-solving, communication, and interpersonal skills.</div>
-      <div class="info-card"><b>Vice-Captain — U-19 Kho-Kho Team:</b> CBSE cluster/interschool competition, 3 years.</div>
-      <div class="info-card"><b>Volunteer Tutor — Angel Xpress Foundation:</b> 40+ hours of Science &amp; Math tutoring.</div>
-      <div class="info-card"><b>Additional community service:</b> EEG Clean UAE, SAHIM Citizen Science Cleanup, M&amp;N Brothers mentorship; 140+ verified community service hours overall.</div>
+      <div class="info-card"><b>Founder &amp; Reviver, PIES Gavel Club:</b> Revived the school's public speaking club and organized regular meetings.</div>
+      <div class="info-card"><b>Delegate, PIESMUN:</b> Represented Madagascar's position in the SOCHUM Committee, applying research, problem-solving, communication, and interpersonal skills.</div>
+      <div class="info-card"><b>Volunteer Tutor, Angel Xpress Foundation:</b> 40+ hours of Science &amp; Math tutoring, plus 140+ verified community service hours overall.</div>
+      <div class="info-card"><b>Vice-Captain, U-19 Kho-Kho Team:</b> CBSE cluster/interschool competition, 3 years.</div>
+      <div class="info-card"><b>Additional community service:</b> EEG Clean UAE, SAHIM Citizen Science Cleanup, M&amp;N Brothers mentorship.</div>
     </div>
   </section>
 
   <section id="honors">
     <div class="section-head"><h2>Honors &amp; Awards</h2></div>
     <div class="badges">
-      <div class="badge highlight">SCO International Science Olympiad — Gold &amp; Outstanding Performance (2022–23)</div>
-      <div class="badge">Rank 44/2,981 — SCO Olympiad (2023–24)</div>
-      <div class="badge">International Olympiad Foundation — Top 42% AI, Top 59% Science</div>
-      <div class="badge">askIITians iCAT — Country Rank 6</div>
-      <div class="badge">CBSE Yogasana Nationals (U-19) — Two-time National Qualifier</div>
-      <div class="badge">UAE CBSE Cluster Yogasana — Gold 2024, Silver 2025</div>
-      <div class="badge">Sports Merit Award, PIES Abu Dhabi (2018–2019)</div>
+      <div class="badge highlight"><svg class="ic"><use href="#i-star"/></svg>SCO International Science Olympiad: Gold &amp; Outstanding Performance (2022-23)</div>
+      <div class="badge">Rank 44/2,981, SCO Olympiad (2023-24)</div>
+      <div class="badge">International Olympiad Foundation: Top 42% AI, Top 59% Science</div>
+      <div class="badge">askIITians iCAT: Country Rank 6</div>
+      <div class="badge">CBSE Yogasana Nationals (U-19): Two-time National Qualifier</div>
+      <div class="badge">UAE CBSE Cluster Yogasana: Gold 2024, Silver 2025</div>
+      <div class="badge">Sports Merit Award, PIES Abu Dhabi (2018-2019)</div>
     </div>
   </section>
 
@@ -439,11 +607,11 @@
       <div>
         <div class="skill-cat">Frameworks &amp; Backend</div>
         <div class="pill-row">
-          <span class="pill">Flask</span><span class="pill">SQLite</span><span class="pill">MySQL</span><span class="pill">PostgreSQL</span><span class="pill">Supabase</span>
+          <span class="pill">Flask</span><span class="pill">Supabase</span><span class="pill">SQLite</span><span class="pill">MySQL</span><span class="pill">PostgreSQL</span><span class="pill">REST APIs</span>
         </div>
       </div>
       <div>
-        <div class="skill-cat">Data &amp; ML</div>
+        <div class="skill-cat">AI / ML</div>
         <div class="pill-row">
           <span class="pill">pandas</span><span class="pill">NumPy</span><span class="pill">scikit-learn</span><span class="pill">EDA</span><span class="pill">Regression</span><span class="pill">Classification</span><span class="pill">Time Series</span>
         </div>
@@ -451,20 +619,67 @@
       <div>
         <div class="skill-cat">Tools &amp; Platforms</div>
         <div class="pill-row">
-          <span class="pill">Git</span><span class="pill">Linux</span><span class="pill">Excel</span><span class="pill">Access</span><span class="pill">Tableau</span><span class="pill">R</span><span class="pill">Cloud Computing</span>
+          <span class="pill">Git</span><span class="pill">GitHub</span><span class="pill">Linux</span><span class="pill">Excel</span><span class="pill">Access</span><span class="pill">Tableau (basic)</span><span class="pill">R (basic)</span><span class="pill">Cloud Computing</span>
         </div>
       </div>
       <div>
         <div class="skill-cat">Spoken Languages</div>
         <div class="pill-row">
-          <span class="pill">English — Fluent</span><span class="pill">Hindi — Fluent</span><span class="pill">Gujarati — Native</span><span class="pill">Arabic — Conversational</span>
+          <span class="pill">English: Fluent</span><span class="pill">Hindi: Fluent</span><span class="pill">Gujarati: Native</span><span class="pill">Arabic: Conversational</span>
         </div>
       </div>
     </div>
   </section>
 
-  <footer>© 2026 Dhairya Prajapati</footer>
+  <footer>
+    <div class="footer-links">
+      <a href="mailto:dhairya2277@gmail.com" aria-label="Email"><svg class="ic"><use href="#i-mail"/></svg></a>
+      <a href="https://www.linkedin.com/in/dhairya-prajapati-082a08357/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg class="ic"><use href="#i-linkedin"/></svg></a>
+      <a href="https://github.com/Dhairya19793" target="_blank" rel="noopener" aria-label="GitHub"><svg class="ic"><use href="#i-github"/></svg></a>
+    </div>
+    <div>© 2026 Dhairya Prajapati</div>
+  </footer>
 </div>
+
+<script>
+  // Nav shadow on scroll
+  var nav = document.getElementById('nav');
+  var onScroll = function(){
+    if (window.scrollY > 8) { nav.classList.add('scrolled'); }
+    else { nav.classList.remove('scrolled'); }
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  // Reveal sections on scroll + active nav link
+  var sections = document.querySelectorAll('section[id]');
+  var navLinks = document.querySelectorAll('.nav-links a');
+  var linkFor = {};
+  navLinks.forEach(function(a){ linkFor[a.getAttribute('href').slice(1)] = a; });
+
+  if ('IntersectionObserver' in window) {
+    var revealObserver = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (entry.isIntersecting) { entry.target.classList.add('in-view'); }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+    sections.forEach(function(s){ revealObserver.observe(s); });
+
+    var spyObserver = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        var link = linkFor[entry.target.id];
+        if (!link) return;
+        if (entry.isIntersecting) {
+          navLinks.forEach(function(a){ a.classList.remove('active'); });
+          link.classList.add('active');
+        }
+      });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    sections.forEach(function(s){ spyObserver.observe(s); });
+  } else {
+    sections.forEach(function(s){ s.classList.add('in-view'); });
+  }
+</script>
 
 </body>
 </html>
