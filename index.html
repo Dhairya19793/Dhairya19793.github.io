@@ -202,11 +202,12 @@
   .two-col{display:grid; grid-template-columns:1fr 1fr; gap:0 48px; margin-bottom:8px;}
   @media (max-width:760px){ .two-col{grid-template-columns:1fr; gap:44px 0;} }
 
-  section{margin-bottom:56px; opacity:0; transform:translateY(14px); transition:opacity .6s ease, transform .6s ease;}
-  section.in-view{opacity:1; transform:translateY(0);}
+  section{margin-bottom:56px; opacity:1; transform:none;}
   section:target{scroll-margin-top:84px;}
+  .js-reveal section{opacity:0; transform:translateY(14px); transition:opacity .6s ease, transform .6s ease;}
+  .js-reveal section.in-view{opacity:1; transform:translateY(0);}
   @media (prefers-reduced-motion: reduce){
-    section{opacity:1; transform:none; transition:none;}
+    .js-reveal section{opacity:1; transform:none; transition:none;}
     .status-dot{animation:none;}
   }
 
@@ -349,11 +350,11 @@
       <div>
         <p class="eyebrow">Computer Science · Cal Poly SLO</p>
         <h1>Dhairya Prajapati</h1>
-        <p class="role">Software Engineering · Applied AI &amp; Machine Learning · Backend Development · Data Analytics</p>
+        <p class="role">Software Engineering · Applied AI &amp; Machine Learning · Backend Development · Data &amp; Quantitative Analysis</p>
       </div>
     </div>
 
-    <div class="status-badge"><span class="status-dot"></span>Available Summer 2027 &nbsp;·&nbsp; F-1 Student</div>
+    <div class="status-badge"><span class="status-dot"></span>Available Summer 2027 &nbsp;·&nbsp; CPT-Eligible F-1 Student</div>
 
     <div class="hero-contact">
       <a class="chip" href="mailto:dhairya2277@gmail.com"><svg class="ic"><use href="#i-mail"/></svg>dhairya2277@gmail.com</a>
@@ -509,7 +510,7 @@
         <div class="entry">
           <div class="entry-top">
             <div class="entry-title">Finance &amp; Banking Intern</div>
-            <div class="entry-dates">2024</div>
+            <div class="entry-dates">Jul 2024</div>
           </div>
           <div class="entry-org">Grey Sells · Dubai, UAE</div>
           <ul>
@@ -549,7 +550,7 @@
     <div class="section-head"><h2>Education</h2></div>
     <div class="edu-card">
       <div class="edu-name">California Polytechnic State University, San Luis Obispo</div>
-      <div class="edu-detail">B.S. Computer Science | First-Year Computer Science Student | <b>Sep 2026 - Jun 2030</b></div>
+      <div class="edu-detail">B.S. Computer Science | First-Year Computer Science Student | <b>Aug 2026 - May 2030</b></div>
       <div class="edu-detail" style="margin-top:6px; font-style:italic;">Pre-College Coursework (CBSE, India/UAE): Computer Science, Mathematics, Physics, Chemistry, English | Harvard CS50x: Introduction to Computer Science</div>
     </div>
   </section>
@@ -581,7 +582,7 @@
     <div class="badges">
       <div class="badge highlight"><svg class="ic"><use href="#i-star"/></svg>SCO International Science Olympiad: Gold &amp; Outstanding Performance (2022-23)</div>
       <div class="badge">Rank 44/2,981, SCO Olympiad (2023-24)</div>
-      <div class="badge">International Olympiad Foundation: Top 42% AI, Top 59% Science</div>
+      <div class="badge">International Olympiad Foundation: Top 42% AI, Top 59% Science, Top 77% English</div>
       <div class="badge">askIITians iCAT: Country Rank 6</div>
       <div class="badge">CBSE Yogasana Nationals (U-19): Two-time National Qualifier</div>
       <div class="badge">UAE CBSE Cluster Yogasana: Gold 2024, Silver 2025</div>
@@ -607,19 +608,25 @@
       <div>
         <div class="skill-cat">Frameworks &amp; Backend</div>
         <div class="pill-row">
-          <span class="pill">Flask</span><span class="pill">Supabase</span><span class="pill">SQLite</span><span class="pill">MySQL</span><span class="pill">PostgreSQL</span><span class="pill">REST APIs</span>
+          <span class="pill">Flask</span><span class="pill">Supabase</span><span class="pill">SQLite</span><span class="pill">MySQL</span><span class="pill">PostgreSQL</span><span class="pill">REST APIs</span><span class="pill">Relational Data Modeling</span>
         </div>
       </div>
       <div>
         <div class="skill-cat">AI / ML</div>
         <div class="pill-row">
-          <span class="pill">pandas</span><span class="pill">NumPy</span><span class="pill">scikit-learn</span><span class="pill">EDA</span><span class="pill">Regression</span><span class="pill">Classification</span><span class="pill">Time Series</span>
+          <span class="pill">pandas</span><span class="pill">NumPy</span><span class="pill">scikit-learn</span><span class="pill">statsmodels</span><span class="pill">EDA</span><span class="pill">Regression</span><span class="pill">Classification</span><span class="pill">Time Series</span>
+        </div>
+      </div>
+      <div>
+        <div class="skill-cat">Quantitative &amp; Finance</div>
+        <div class="pill-row">
+          <span class="pill">Financial Modeling</span><span class="pill">Valuation</span><span class="pill">Statistical Analysis</span><span class="pill">Business Finance Foundations</span>
         </div>
       </div>
       <div>
         <div class="skill-cat">Tools &amp; Platforms</div>
         <div class="pill-row">
-          <span class="pill">Git</span><span class="pill">GitHub</span><span class="pill">Linux</span><span class="pill">Excel</span><span class="pill">Access</span><span class="pill">Tableau (basic)</span><span class="pill">R (basic)</span><span class="pill">Cloud Computing</span>
+          <span class="pill">Git</span><span class="pill">GitHub</span><span class="pill">Linux</span><span class="pill">Excel</span><span class="pill">Access</span><span class="pill">Tableau (basic)</span><span class="pill">R (basic)</span><span class="pill">Whisper</span><span class="pill">Ollama</span>
         </div>
       </div>
       <div>
@@ -651,19 +658,31 @@
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
-  // Reveal sections on scroll + active nav link
+  // Reveal sections on scroll + active nav link.
+  // Content stays visible by default (see CSS); the fade-in is opt-in via
+  // .js-reveal, and a timed fallback guarantees everything is shown even if
+  // IntersectionObserver never fires (slow devices, scroll-less captures, etc).
   var sections = document.querySelectorAll('section[id]');
   var navLinks = document.querySelectorAll('.nav-links a');
   var linkFor = {};
   navLinks.forEach(function(a){ linkFor[a.getAttribute('href').slice(1)] = a; });
 
-  if ('IntersectionObserver' in window) {
+  var reducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if ('IntersectionObserver' in window && !reducedMotion) {
+    document.documentElement.classList.add('js-reveal');
+
     var revealObserver = new IntersectionObserver(function(entries){
       entries.forEach(function(entry){
         if (entry.isIntersecting) { entry.target.classList.add('in-view'); }
       });
     }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
     sections.forEach(function(s){ revealObserver.observe(s); });
+
+    // Safety net: force every section visible after a short delay no matter what.
+    setTimeout(function(){
+      sections.forEach(function(s){ s.classList.add('in-view'); });
+    }, 2500);
 
     var spyObserver = new IntersectionObserver(function(entries){
       entries.forEach(function(entry){
