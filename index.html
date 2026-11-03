@@ -10,17 +10,17 @@
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --green:#12402f;
-    --green-2:#1b5a43;
-    --green-soft:#cfe3d8;
-    --gold:#c4820e;
-    --gold-text:#85560a;
-    --paper:#f6f7f4;
+    --green:#0b4f5c;
+    --green-2:#0e6b7a;
+    --green-soft:#bfe3e6;
+    --gold:#e0952b;
+    --gold-text:#8a5508;
+    --paper:#f2f9fa;
     --card:#ffffff;
-    --ink:#15201a;
-    --muted:#4f5c54;
-    --faint:#6b7770;
-    --line:#dde3de;
+    --ink:#12262b;
+    --muted:#46595e;
+    --faint:#62767b;
+    --line:#d6e6e8;
     --side:340px;
   }
   *{box-sizing:border-box;}
@@ -39,31 +39,31 @@
   .shell{display:grid; grid-template-columns:var(--side) 1fr; min-height:100vh;}
   .rail{
     position:sticky; top:0; height:100vh; overflow:auto;
-    background:var(--green); color:#e9f1ec; padding:44px 36px 32px;
+    background:linear-gradient(180deg,#d4eef0 0%,#bfe3e6 100%); color:#0b3d47; padding:44px 36px 32px;
     display:flex; flex-direction:column; gap:28px;
   }
   .rail::after{content:""; position:absolute; top:0; right:0; width:4px; height:100%; background:var(--gold);}
   .monogram{
-    width:64px; height:64px; border-radius:16px; background:var(--gold); color:#1b1204;
+    width:64px; height:64px; border-radius:16px; background:var(--green); color:#fff;
     display:grid; place-items:center; font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:26px; flex:none;
   }
-  .rail h1{font-size:38px; color:#fff; font-weight:700;}
-  .rail .tag{margin:10px 0 0; color:var(--green-soft); font-size:15px;}
+  .rail h1{font-size:38px; color:var(--green); font-weight:700;}
+  .rail .tag{margin:10px 0 0; color:#2f5b64; font-size:15px;}
   .avail{
     display:flex; gap:10px; align-items:flex-start; padding:14px 16px; border-radius:12px;
-    background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.14); font-size:14px; color:#f2f7f4;
+    background:rgba(255,255,255,.65); border:1px solid rgba(11,79,92,.18); font-size:14px; color:#0b3d47;
   }
-  .avail i{width:9px; height:9px; margin-top:7px; border-radius:50%; background:#5fd39b; flex:none; box-shadow:0 0 0 4px rgba(95,211,155,.2);}
+  .avail i{width:9px; height:9px; margin-top:7px; border-radius:50%; background:#1fa56b; flex:none; box-shadow:0 0 0 4px rgba(31,165,107,.22);}
   .rail nav{display:flex; flex-direction:column; gap:2px;}
   .rail nav a{
-    color:#cfe0d6; text-decoration:none; font-size:15px; padding:8px 12px; margin-left:-12px;
+    color:#23515b; text-decoration:none; font-size:15px; padding:8px 12px; margin-left:-12px;
     border-radius:8px; border-left:3px solid transparent;
   }
-  .rail nav a:hover{background:rgba(255,255,255,.08); color:#fff;}
-  .rail nav a.active{color:#fff; font-weight:600; border-left-color:var(--gold); background:rgba(255,255,255,.07);}
+  .rail nav a:hover{background:rgba(255,255,255,.6); color:var(--green);}
+  .rail nav a.active{color:var(--green); font-weight:600; border-left-color:var(--gold); background:rgba(255,255,255,.75);}
   .contact{margin-top:auto; display:flex; flex-direction:column; gap:8px; font-size:14px;}
-  .contact a{color:#e9f1ec; text-decoration:none; word-break:break-all;}
-  .contact a:hover{color:var(--gold); text-decoration:underline;}
+  .contact a{color:#0b4f5c; text-decoration:none; word-break:break-all;}
+  .contact a:hover{color:var(--gold-text); text-decoration:underline;}
 
   main{padding:64px 72px 40px; max-width:1020px;}
   section{padding:0 0 72px; scroll-margin-top:24px;}
@@ -95,7 +95,7 @@
   .feature h3{font-size:20px; color:var(--green);}
   .feature p{margin:0; color:var(--muted); font-size:15px;}
   .chips{display:flex; flex-wrap:wrap; gap:6px; margin-top:auto; padding-top:6px;}
-  .chip{font-size:12.5px; padding:3px 10px; border-radius:999px; background:#eef3ef; color:var(--green); border:1px solid var(--green-soft); font-weight:500;}
+  .chip{font-size:12.5px; padding:3px 10px; border-radius:999px; background:#e6f4f5; color:var(--green); border:1px solid var(--green-soft); font-weight:500;}
   .feature a.more{font-weight:600; font-size:14.5px;}
 
   /* Rows (experience and projects) */
@@ -153,7 +153,7 @@
     .rail::after{width:100%; height:4px; top:auto; bottom:0; right:auto; left:0;}
     .rail h1{font-size:32px;}
     .rail nav{flex-direction:row; flex-wrap:wrap; gap:6px;}
-    .rail nav a{margin-left:0; border:1px solid rgba(255,255,255,.2); padding:6px 12px;}
+    .rail nav a{margin-left:0; border:1px solid rgba(11,79,92,.25); padding:6px 12px;}
     .rail nav a.active{border-color:var(--gold);}
     .contact{margin-top:0;}
     main{padding:40px 20px 24px;}
@@ -181,7 +181,7 @@
       <h1>Dhairya Prajapati</h1>
       <p class="tag">Computer Science, Cal Poly San Luis Obispo. Class of 2030.</p>
     </div>
-    <div class="avail"><i></i><span><b style="color:#fff">Available Summer 2027</b><br>CPT-Eligible F-1 Student</span></div>
+    <div class="avail"><i></i><span><b style="color:var(--green)">Available Summer 2027</b><br>CPT-Eligible F-1 Student</span></div>
     <nav aria-label="Sections">
       <a href="#about" class="active">About</a>
       <a href="#work">Selected work</a>
