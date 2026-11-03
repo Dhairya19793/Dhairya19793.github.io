@@ -1,704 +1,542 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dhairya Prajapati | Portfolio</title>
-<meta name="description" content="Dhairya Prajapati, first-year Computer Science student at Cal Poly San Luis Obispo, building across AI/ML, backend engineering, and data analytics.">
-<link rel="canonical" href="https://dhairya19793.github.io">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dhairya Prajapati | Computer Science, Cal Poly SLO</title>
+<meta name="description" content="First-year Computer Science student at Cal Poly San Luis Obispo building software, applied machine learning, and data systems. Available Summer 2027.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --navy:#0f2a4a;
-    --navy-deep:#081626;
-    --navy-mid:#16365e;
-    --navy-soft:#a9bcd4;
-    --ink:#1c1f24;
-    --ink-soft:#585e66;
-    --ink-faint:#8a8f96;
-    --line:#e6e6e4;
-    --accent:#b5672a;
-    --accent-2:#c78a1f;
-    --accent-bg:#faf1e6;
-    --card-bg:#fafafa;
-    --good:#2f9e63;
-    --shadow-sm:0 1px 2px rgba(15,42,74,.06), 0 1px 1px rgba(15,42,74,.04);
-    --shadow-md:0 10px 24px -8px rgba(15,42,74,.18), 0 2px 6px rgba(15,42,74,.06);
-    --radius:10px;
-    --max:1040px;
+    --green:#12402f;
+    --green-2:#1b5a43;
+    --green-soft:#cfe3d8;
+    --gold:#c4820e;
+    --gold-text:#85560a;
+    --paper:#f6f7f4;
+    --card:#ffffff;
+    --ink:#15201a;
+    --muted:#4f5c54;
+    --faint:#6b7770;
+    --line:#dde3de;
+    --side:340px;
   }
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
-  body{
-    margin:0;
-    background:#fff;
-    color:var(--ink);
-    font-family:'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    font-size:16px;
-    line-height:1.65;
-    -webkit-font-smoothing:antialiased;
-  }
-  a{color:inherit;}
-  a:focus-visible, button:focus-visible{outline:2px solid var(--accent); outline-offset:3px;}
-  ::selection{background:var(--accent-2); color:#fff;}
+  body{margin:0; background:var(--paper); color:var(--ink); font-family:'Figtree',system-ui,-apple-system,'Segoe UI',sans-serif; font-size:16px; line-height:1.6; -webkit-font-smoothing:antialiased;}
+  h1,h2,h3{font-family:'Bricolage Grotesque','Figtree',system-ui,sans-serif; margin:0; letter-spacing:-.01em; line-height:1.15;}
+  a{color:var(--green-2); text-decoration-thickness:1px; text-underline-offset:3px;}
+  a:hover{color:var(--gold-text);}
+  a:focus-visible, summary:focus-visible, button:focus-visible{outline:3px solid var(--gold); outline-offset:3px; border-radius:4px;}
+  ul{margin:0; padding-left:1.1em;}
+  li{margin:0 0 6px; color:var(--muted);}
+  li::marker{color:var(--gold);}
+  b,strong{color:var(--ink); font-weight:600;}
 
-  /* ---- Nav ---- */
-  .nav{
-    position:sticky; top:0; z-index:20;
-    background:rgba(255,255,255,.88);
-    backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
-    border-bottom:1px solid var(--line);
-    transition:box-shadow .25s ease, border-color .25s ease;
+  /* Layout: fixed profile rail and scrolling content */
+  .shell{display:grid; grid-template-columns:var(--side) 1fr; min-height:100vh;}
+  .rail{
+    position:sticky; top:0; height:100vh; overflow:auto;
+    background:var(--green); color:#e9f1ec; padding:44px 36px 32px;
+    display:flex; flex-direction:column; gap:28px;
   }
-  .nav.scrolled{box-shadow:0 4px 18px -8px rgba(15,42,74,.18); border-bottom-color:transparent;}
-  .nav-inner{
-    max-width:var(--max); margin:0 auto; padding:14px 32px;
-    display:flex; align-items:center; justify-content:space-between;
-    gap:16px; flex-wrap:wrap;
+  .rail::after{content:""; position:absolute; top:0; right:0; width:4px; height:100%; background:var(--gold);}
+  .monogram{
+    width:64px; height:64px; border-radius:16px; background:var(--gold); color:#1b1204;
+    display:grid; place-items:center; font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:26px; flex:none;
   }
-  .nav-name{
-    font-family:'Fraunces', Georgia, serif; font-weight:600; font-size:16.5px; color:var(--navy);
-    display:flex; align-items:center; gap:9px; text-decoration:none;
+  .rail h1{font-size:38px; color:#fff; font-weight:700;}
+  .rail .tag{margin:10px 0 0; color:var(--green-soft); font-size:15px;}
+  .avail{
+    display:flex; gap:10px; align-items:flex-start; padding:14px 16px; border-radius:12px;
+    background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.14); font-size:14px; color:#f2f7f4;
   }
-  .nav-mark{
-    width:26px; height:26px; border-radius:8px; flex:none;
-    background:linear-gradient(145deg, var(--navy) 0%, var(--navy-mid) 100%);
-    color:#fff; font-size:11px; font-weight:700; letter-spacing:.02em;
-    display:flex; align-items:center; justify-content:center;
-    font-family:'Inter', sans-serif;
+  .avail i{width:9px; height:9px; margin-top:7px; border-radius:50%; background:#5fd39b; flex:none; box-shadow:0 0 0 4px rgba(95,211,155,.2);}
+  .rail nav{display:flex; flex-direction:column; gap:2px;}
+  .rail nav a{
+    color:#cfe0d6; text-decoration:none; font-size:15px; padding:8px 12px; margin-left:-12px;
+    border-radius:8px; border-left:3px solid transparent;
   }
-  .nav-links{display:flex; gap:4px; flex-wrap:wrap;}
-  .nav-links a{
-    font-size:13.5px; color:var(--ink-soft); text-decoration:none; font-weight:500;
-    padding:7px 11px; border-radius:7px; transition:background .15s ease, color .15s ease;
-  }
-  .nav-links a:hover{color:var(--navy); background:var(--accent-bg);}
-  .nav-links a.active{color:var(--navy); background:var(--accent-bg); font-weight:600;}
-  @media (max-width:760px){ .nav-links{display:none;} }
+  .rail nav a:hover{background:rgba(255,255,255,.08); color:#fff;}
+  .rail nav a.active{color:#fff; font-weight:600; border-left-color:var(--gold); background:rgba(255,255,255,.07);}
+  .contact{margin-top:auto; display:flex; flex-direction:column; gap:8px; font-size:14px;}
+  .contact a{color:#e9f1ec; text-decoration:none; word-break:break-all;}
+  .contact a:hover{color:var(--gold); text-decoration:underline;}
 
-  /* ---- Hero ---- */
-  .hero{
-    background:
-      radial-gradient(640px 420px at 88% -10%, rgba(199,138,31,.22), transparent 60%),
-      radial-gradient(520px 360px at 6% 110%, rgba(169,188,212,.16), transparent 60%),
-      linear-gradient(160deg, var(--navy) 0%, var(--navy-deep) 100%);
-    color:#fff;
-    padding:64px 32px 52px;
-    position:relative;
-    overflow:hidden;
-  }
-  .hero::after{
-    content:"";
-    position:absolute; top:-130px; right:-110px;
-    width:360px; height:360px; border-radius:50%;
-    border:1px solid rgba(255,255,255,.08);
-  }
-  .hero::before{
-    content:"";
-    position:absolute; bottom:-160px; left:-90px;
-    width:300px; height:300px; border-radius:50%;
-    border:1px solid rgba(255,255,255,.06);
-  }
-  .hero-inner{max-width:var(--max); margin:0 auto; position:relative;}
-  .hero-top{display:flex; align-items:center; gap:22px; flex-wrap:wrap; margin-bottom:22px;}
-  .avatar{
-    width:72px; height:72px; border-radius:20px; flex:none;
-    background:linear-gradient(150deg, var(--accent-2) 0%, var(--accent) 100%);
-    display:flex; align-items:center; justify-content:center;
-    font-family:'Fraunces', Georgia, serif; font-weight:600; font-size:26px; color:#fff;
-    box-shadow:0 10px 28px -8px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.25);
-  }
-  .eyebrow{
-    text-transform:uppercase; letter-spacing:.11em; font-size:11.5px; font-weight:600;
-    color:var(--accent-2); margin:0 0 6px;
-  }
-  .hero h1{
-    font-family:'Fraunces', Georgia, serif; font-weight:600;
-    font-size:38px; letter-spacing:-0.01em; margin:0 0 6px; line-height:1.1;
-  }
-  .hero .role{color:var(--navy-soft); font-size:14.5px; margin:0; font-weight:500;}
+  main{padding:64px 72px 40px; max-width:1020px;}
+  section{padding:0 0 72px; scroll-margin-top:24px;}
+  .sec-title{font-size:30px; color:var(--green); margin-bottom:26px; padding-bottom:14px; border-bottom:2px solid var(--line); position:relative;}
+  .sec-title::after{content:""; position:absolute; left:0; bottom:-2px; width:56px; height:2px; background:var(--gold);}
 
-  .status-badge{
-    display:inline-flex; align-items:center; gap:8px;
-    background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.16);
-    padding:7px 14px 7px 11px; border-radius:999px; font-size:13px; font-weight:500;
-    margin:18px 0 20px; color:#f2f5f9;
-  }
-  .status-dot{
-    width:8px; height:8px; border-radius:50%; background:var(--good); flex:none;
-    box-shadow:0 0 0 3px rgba(47,158,99,.25);
-    animation:pulse 2.2s ease-in-out infinite;
-  }
-  @keyframes pulse{
-    0%,100%{box-shadow:0 0 0 3px rgba(47,158,99,.25);}
-    50%{box-shadow:0 0 0 6px rgba(47,158,99,.1);}
-  }
+  /* Hero */
+  .hero{padding-bottom:64px;}
+  .hero h2{font-size:clamp(32px,4.4vw,52px); color:var(--green); font-weight:700; max-width:17em;}
+  .hero p.lead{font-size:19px; color:var(--muted); max-width:36em; margin:22px 0 0;}
+  .cta{display:flex; flex-wrap:wrap; gap:12px; margin-top:30px;}
+  .btn{display:inline-block; padding:12px 22px; border-radius:10px; font-weight:600; font-size:15px; text-decoration:none; border:2px solid var(--green);}
+  .btn.solid{background:var(--green); color:#fff;}
+  .btn.solid:hover{background:var(--green-2); color:#fff;}
+  .btn.ghost{color:var(--green); background:transparent;}
+  .btn.ghost:hover{background:var(--green); color:#fff;}
+  .facts{display:grid; grid-template-columns:repeat(4,1fr); margin-top:44px; border:1px solid var(--line); border-radius:14px; background:var(--card); overflow:hidden;}
+  .fact{padding:18px 20px; border-right:1px solid var(--line);}
+  .fact:last-child{border-right:0;}
+  .fact strong{display:block; font-family:'Bricolage Grotesque',sans-serif; font-size:26px; color:var(--green); line-height:1.2;}
+  .fact span{font-size:13.5px; color:var(--muted);}
 
-  .hero-contact{display:flex; flex-wrap:wrap; gap:9px; margin-bottom:22px;}
-  .chip{
-    display:inline-flex; align-items:center; gap:7px;
-    background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.14);
-    color:#eef2f7; text-decoration:none; font-size:13.5px; font-weight:500;
-    padding:8px 13px; border-radius:9px; transition:background .18s ease, border-color .18s ease, transform .18s ease;
+  /* Selected work */
+  .feature-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:18px;}
+  .feature{
+    background:var(--card); border:1px solid var(--line); border-top:4px solid var(--gold);
+    border-radius:14px; padding:24px; display:flex; flex-direction:column; gap:12px;
   }
-  .chip:hover{background:rgba(255,255,255,.14); border-color:rgba(255,255,255,.3); transform:translateY(-1px);}
-  .chip .ic{width:15px; height:15px; flex:none; opacity:.85;}
+  .feature h3{font-size:20px; color:var(--green);}
+  .feature p{margin:0; color:var(--muted); font-size:15px;}
+  .chips{display:flex; flex-wrap:wrap; gap:6px; margin-top:auto; padding-top:6px;}
+  .chip{font-size:12.5px; padding:3px 10px; border-radius:999px; background:#eef3ef; color:var(--green); border:1px solid var(--green-soft); font-weight:500;}
+  .feature a.more{font-weight:600; font-size:14.5px;}
 
-  .hero-cta{display:flex; flex-wrap:wrap; gap:12px; margin-bottom:26px;}
-  .btn{
-    display:inline-flex; align-items:center; gap:8px;
-    font-size:13.5px; font-weight:600; text-decoration:none;
-    padding:11px 20px; border-radius:9px; transition:transform .18s ease, box-shadow .18s ease, background .18s ease;
-  }
-  .btn-solid{
-    background:linear-gradient(135deg, var(--accent-2), var(--accent));
-    color:#fff; box-shadow:0 8px 20px -6px rgba(181,103,42,.55);
-  }
-  .btn-solid:hover{transform:translateY(-2px); box-shadow:0 12px 26px -6px rgba(181,103,42,.65);}
-  .btn-ghost{
-    background:rgba(255,255,255,.04); color:#fff; border:1px solid rgba(255,255,255,.22);
-  }
-  .btn-ghost:hover{background:rgba(255,255,255,.1); transform:translateY(-2px);}
+  /* Rows (experience and projects) */
+  .row{display:grid; grid-template-columns:150px 1fr; gap:28px; padding:26px 0; border-top:1px solid var(--line);}
+  .sec-title + .row{border-top:0; padding-top:0;}
+  .when{font-size:14px; color:var(--faint); font-weight:500; padding-top:3px;}
+  .row h3{font-size:19px; color:var(--ink);}
+  .org{color:var(--gold-text); font-weight:500; font-size:15px; margin:2px 0 10px;}
 
-  .school-line{
-    color:var(--navy-soft); font-size:13.5px; margin:0;
-    padding-top:18px; border-top:1px solid rgba(255,255,255,.14); max-width:640px;
-  }
+  /* Education */
+  .edu{background:var(--card); border:1px solid var(--line); border-radius:14px; padding:28px; display:grid; gap:14px;}
+  .edu h3{font-size:22px; color:var(--green);}
+  .edu dl{display:grid; grid-template-columns:150px 1fr; gap:10px 20px; margin:0;}
+  .edu dt{font-weight:600; color:var(--ink);}
+  .edu dd{margin:0; color:var(--muted);}
+  .cert-list{display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:22px;}
+  .cert{background:var(--card); border:1px solid var(--line); border-radius:12px; padding:16px 18px; font-size:15px; color:var(--muted);}
+  .cert b{display:block; color:var(--green); margin-bottom:2px;}
 
-  .wrap{max-width:var(--max); margin:0 auto; padding:0 32px 80px;}
+  /* Beyond code */
+  details{background:var(--card); border:1px solid var(--line); border-radius:14px; margin-bottom:12px; overflow:hidden;}
+  summary{
+    cursor:pointer; list-style:none; padding:18px 22px; font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:19px; color:var(--green);
+    display:flex; align-items:center; gap:12px;
+  }
+  summary::-webkit-details-marker{display:none;}
+  summary small{font-family:'Figtree',sans-serif; font-weight:500; font-size:13.5px; color:var(--faint);}
+  summary::after{content:"+"; font-size:24px; color:var(--gold-text); line-height:1; margin-left:auto;}
+  details[open] summary::after{content:"\2212";}
+  details[open] summary{border-bottom:1px solid var(--line);}
+  .items{padding:8px 22px 18px;}
+  .item{padding:12px 0; border-top:1px solid var(--line); font-size:15px; color:var(--muted);}
+  .item:first-child{border-top:0;}
+  .item b{color:var(--ink);}
 
-  /* ---- Summary ---- */
-  .summary{
-    background:var(--accent-bg);
-    border-left:3px solid var(--accent);
-    border-radius:2px 10px 10px 2px;
-    padding:24px 26px;
-    margin:36px 0 52px;
-    font-size:15.5px; line-height:1.72; color:#3a2e22;
-    box-shadow:var(--shadow-sm);
-  }
-  .summary a{color:var(--navy); font-weight:600; text-decoration:none; border-bottom:1px solid transparent; transition:border-color .15s ease;}
-  .summary a:hover{border-color:var(--navy);}
-  .summary b{font-weight:600; color:var(--ink);}
+  /* Skills */
+  dl.skills{margin:0; background:var(--card); border:1px solid var(--line); border-radius:14px; overflow:hidden;}
+  .skill-row{display:grid; grid-template-columns:210px 1fr; gap:20px; padding:16px 24px; border-top:1px solid var(--line); font-size:15px;}
+  .skill-row:first-child{border-top:0;}
+  .skill-row dt{font-weight:600; color:var(--green);}
+  .skill-row dd{margin:0; color:var(--muted);}
 
-  /* ---- Section headers ---- */
-  .section-head{display:flex; align-items:baseline; justify-content:space-between; margin-bottom:24px; padding-bottom:12px; border-bottom:1px solid var(--line);}
-  .section-head h2{display:flex; align-items:center; gap:11px;}
-  .section-head h2::before{
-    content:""; display:block; width:9px; height:9px; border-radius:3px;
-    background:linear-gradient(135deg, var(--accent-2), var(--accent));
-    flex:none;
-  }
-  h2{
-    font-family:'Fraunces', Georgia, serif; font-weight:600; font-size:23px; color:var(--navy); margin:0;
-  }
-  .section-count{
-    font-size:11.5px; color:var(--accent); font-weight:600; letter-spacing:.02em;
-    background:var(--accent-bg); padding:4px 11px; border-radius:999px; white-space:nowrap;
-  }
+  footer{border-top:1px solid var(--line); padding:26px 0 10px; color:var(--faint); font-size:14px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;}
 
-  .two-col{display:grid; grid-template-columns:1fr 1fr; gap:0 48px; margin-bottom:8px;}
-  @media (max-width:760px){ .two-col{grid-template-columns:1fr; gap:44px 0;} }
-
-  section{margin-bottom:56px; opacity:1; transform:none;}
-  section:target{scroll-margin-top:84px;}
-  .js-reveal section{opacity:0; transform:translateY(14px); transition:opacity .6s ease, transform .6s ease;}
-  .js-reveal section.in-view{opacity:1; transform:translateY(0);}
-  @media (prefers-reduced-motion: reduce){
-    .js-reveal section{opacity:1; transform:none; transition:none;}
-    .status-dot{animation:none;}
+  @media (max-width:1100px){
+    main{padding:56px 40px 32px;}
+    .feature-grid{grid-template-columns:1fr;}
+    .facts{grid-template-columns:1fr 1fr;}
+    .fact:nth-child(2){border-right:0;}
+    .fact:nth-child(-n+2){border-bottom:1px solid var(--line);}
   }
-
-  /* ---- Timeline entries ---- */
-  .timeline{position:relative; padding-left:20px; border-left:2px solid var(--line);}
-  .entry{
-    position:relative; margin-bottom:10px; padding:14px 16px 14px 18px;
-    border-radius:10px; transition:background .18s ease, box-shadow .18s ease, transform .18s ease;
+  @media (max-width:900px){
+    .shell{display:block;}
+    .rail{position:relative; height:auto; padding:32px 24px 28px; gap:20px;}
+    .rail::after{width:100%; height:4px; top:auto; bottom:0; right:auto; left:0;}
+    .rail h1{font-size:32px;}
+    .rail nav{flex-direction:row; flex-wrap:wrap; gap:6px;}
+    .rail nav a{margin-left:0; border:1px solid rgba(255,255,255,.2); padding:6px 12px;}
+    .rail nav a.active{border-color:var(--gold);}
+    .contact{margin-top:0;}
+    main{padding:40px 20px 24px;}
+    .row{grid-template-columns:1fr; gap:6px;}
+    .edu dl{grid-template-columns:1fr; gap:2px 0;}
+    .edu dt{margin-top:8px;}
+    .cert-list{grid-template-columns:1fr;}
+    .skill-row{grid-template-columns:1fr; gap:4px; padding:14px 18px;}
   }
-  .entry:hover{background:var(--card-bg); box-shadow:var(--shadow-sm); transform:translateX(2px);}
-  .entry:last-child{margin-bottom:0;}
-  .entry::before{
-    content:""; position:absolute; left:-29px; top:19px;
-    width:9px; height:9px; border-radius:50%;
-    background:var(--accent); border:2px solid #fff; box-shadow:0 0 0 1px var(--accent);
-    transition:box-shadow .18s ease;
+  @media (max-width:520px){
+    .facts{grid-template-columns:1fr;}
+    .fact{border-right:0; border-bottom:1px solid var(--line);}
+    .fact:last-child{border-bottom:0;}
   }
-  .entry:hover::before{box-shadow:0 0 0 4px rgba(181,103,42,.18);}
-  .entry-top{display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:2px 12px;}
-  .entry-title{font-weight:600; font-size:15.5px; color:var(--ink);}
-  .entry-dates{color:var(--ink-faint); font-size:12px; white-space:nowrap; font-variant-numeric:tabular-nums; font-weight:500;}
-  .entry-org{color:var(--accent); font-size:13.5px; margin:2px 0 9px; font-weight:500;}
-  .entry-org a{color:var(--accent); text-decoration:none; border-bottom:1px solid rgba(181,103,42,.35);}
-  .entry-org a:hover{border-color:var(--accent);}
-  ul{margin:0; padding-left:18px;}
-  li{margin-bottom:7px; font-size:14.5px; color:var(--ink-soft);}
-  li:last-child{margin-bottom:0;}
-  li b{font-weight:600; color:var(--ink);}
-
-  /* ---- Education ---- */
-  .edu-card{
-    background:var(--card-bg); border:1px solid var(--line); border-radius:var(--radius);
-    padding:22px 24px; transition:box-shadow .18s ease, transform .18s ease;
-  }
-  .edu-card:hover{box-shadow:var(--shadow-md); transform:translateY(-2px);}
-  .edu-name{font-weight:600; font-size:15.5px; margin-bottom:5px; color:var(--ink);}
-  .edu-detail{font-size:14px; color:var(--ink-soft);}
-  .edu-detail b{color:var(--ink); font-weight:600;}
-
-  /* ---- Certifications / Leadership as cards ---- */
-  .card-list{display:grid; gap:12px;}
-  .info-card{
-    background:var(--card-bg); border:1px solid var(--line); border-radius:var(--radius);
-    padding:15px 19px; font-size:14.5px; color:var(--ink-soft);
-    transition:box-shadow .18s ease, transform .18s ease, border-color .18s ease;
-  }
-  .info-card:hover{box-shadow:var(--shadow-md); transform:translateY(-2px); border-color:rgba(181,103,42,.3);}
-  .info-card b{font-weight:600; color:var(--ink);}
-
-  /* ---- Honors badges ---- */
-  .badges{display:flex; flex-wrap:wrap; gap:9px;}
-  .badge{
-    display:inline-flex; align-items:center; gap:7px;
-    border:1px solid var(--line); border-radius:20px;
-    padding:9px 16px; font-size:13px; color:var(--ink-soft); background:#fbfbfa;
-    transition:box-shadow .18s ease, transform .18s ease, border-color .18s ease;
-  }
-  .badge:hover{box-shadow:var(--shadow-sm); transform:translateY(-1px); border-color:rgba(181,103,42,.35);}
-  .badge.highlight{border-color:var(--accent); color:var(--accent); background:var(--accent-bg); font-weight:600;}
-  .badge .ic{width:13px; height:13px; flex:none;}
-
-  /* ---- Skills ---- */
-  .skills-grid{display:grid; grid-template-columns:1fr 1fr; gap:28px 48px;}
-  @media (max-width:600px){ .skills-grid{grid-template-columns:1fr;} }
-  .skill-cat{
-    font-weight:600; font-size:12px; color:var(--navy); margin-bottom:10px; letter-spacing:.06em; text-transform:uppercase;
-    display:flex; align-items:center; gap:7px;
-  }
-  .skill-cat::before{content:""; width:5px; height:5px; border-radius:50%; background:var(--accent);}
-  .pill-row{display:flex; flex-wrap:wrap; gap:7px;}
-  .pill{
-    font-size:13px; color:var(--ink-soft); background:var(--card-bg);
-    border:1px solid var(--line); border-radius:6px; padding:5.5px 11px;
-    transition:background .15s ease, color .15s ease, border-color .15s ease, transform .15s ease;
-  }
-  .pill:hover{background:var(--accent-bg); color:var(--accent); border-color:rgba(181,103,42,.3); transform:translateY(-1px);}
-
-  footer{
-    display:flex; flex-direction:column; align-items:center; gap:14px;
-    text-align:center; color:var(--ink-faint); font-size:12.5px; padding:36px 0 10px; border-top:1px solid var(--line);
-  }
-  .footer-links{display:flex; gap:10px;}
-  .footer-links a{
-    width:34px; height:34px; border-radius:9px; background:var(--card-bg); border:1px solid var(--line);
-    display:flex; align-items:center; justify-content:center; color:var(--ink-soft);
-    transition:background .15s ease, color .15s ease, transform .15s ease;
-  }
-  .footer-links a:hover{background:var(--navy); color:#fff; transform:translateY(-2px);}
-  .footer-links .ic{width:16px; height:16px;}
-
-  @media print{
-    .nav{display:none;}
-    .hero{background:var(--navy) !important; -webkit-print-color-adjust:exact; print-color-adjust:exact;}
-    a{border-bottom:none !important;}
-    section{opacity:1 !important; transform:none !important;}
-  }
+  @media (prefers-reduced-motion:reduce){ html{scroll-behavior:auto;} }
+  @media print{ .rail{position:static; height:auto;} .shell{display:block;} details{break-inside:avoid;} }
 </style>
 </head>
 <body>
+<div class="shell">
 
-<svg style="display:none" aria-hidden="true">
-  <defs>
-    <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
-    </symbol>
-    <symbol id="i-linkedin" viewBox="0 0 24 24" fill="currentColor">
-      <path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.6v1.7h.05c.5-.95 1.75-1.95 3.6-1.95 3.85 0 4.55 2.5 4.55 5.75V21h-4v-5.3c0-1.25-.02-2.85-1.75-2.85-1.75 0-2 1.35-2 2.75V21H9z"/>
-    </symbol>
-    <symbol id="i-github" viewBox="0 0 24 24" fill="currentColor">
-      <path d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.25.79-.56 0-.27-.01-1.17-.02-2.12-3.2.7-3.88-1.36-3.88-1.36-.53-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.71.08-.71 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.23-1.28-5.23-5.68 0-1.25.45-2.28 1.19-3.08-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.05 11.05 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.64 1.59.24 2.76.12 3.05.74.8 1.19 1.83 1.19 3.08 0 4.41-2.69 5.39-5.25 5.67.41.36.78 1.07.78 2.16 0 1.56-.01 2.82-.01 3.2 0 .31.21.67.8.56A10.52 10.52 0 0 0 23.5 12C23.5 5.73 18.27.5 12 .5z"/>
-    </symbol>
-    <symbol id="i-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
-    </symbol>
-    <symbol id="i-star" viewBox="0 0 24 24" fill="currentColor">
-      <polygon points="12 2 15 8.5 22 9.3 17 14.1 18.2 21 12 17.6 5.8 21 7 14.1 2 9.3 9 8.5 12 2"/>
-    </symbol>
-  </defs>
-</svg>
-
-<div class="nav" id="nav">
-  <div class="nav-inner">
-    <a href="#" class="nav-name"><span class="nav-mark">DP</span>Dhairya Prajapati</a>
-    <div class="nav-links">
-      <a href="#projects">Projects</a>
+  <aside class="rail">
+    <div class="monogram" aria-hidden="true">DP</div>
+    <div>
+      <h1>Dhairya Prajapati</h1>
+      <p class="tag">Computer Science, Cal Poly San Luis Obispo. Class of 2030.</p>
+    </div>
+    <div class="avail"><i></i><span><b style="color:#fff">Available Summer 2027</b><br>CPT-Eligible F-1 Student</span></div>
+    <nav aria-label="Sections">
+      <a href="#about" class="active">About</a>
+      <a href="#work">Selected work</a>
       <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
       <a href="#education">Education</a>
-      <a href="#certifications">Certifications</a>
-      <a href="#leadership">Leadership</a>
-      <a href="#honors">Honors</a>
+      <a href="#beyond">Beyond code</a>
       <a href="#skills">Skills</a>
+    </nav>
+    <div class="contact">
+      <a href="mailto:dhairya2277@gmail.com">dhairya2277@gmail.com</a>
+      <a href="https://www.linkedin.com/in/dhairya-prajapati-082a08357/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/Dhairya19793" target="_blank" rel="noopener">GitHub</a>
+      <a href="Dhairya_Prajapati_Resume_2027_FINAL.pdf" target="_blank" rel="noopener">Resume (PDF)</a>
     </div>
-  </div>
-</div>
+  </aside>
 
-<div class="hero">
-  <div class="hero-inner">
-    <div class="hero-top">
-      <div class="avatar">DP</div>
-      <div>
-        <p class="eyebrow">Computer Science · Cal Poly SLO</p>
-        <h1>Dhairya Prajapati</h1>
-        <p class="role">Software Engineering · Applied AI &amp; Machine Learning · Backend Development · Data &amp; Quantitative Analysis</p>
+  <main>
+
+    <section id="about" class="hero">
+      <h2>I build software, machine learning, and data systems that work under real conditions.</h2>
+      <p class="lead">First-year Computer Science student at Cal Poly San Luis Obispo. My work spans healthcare AI research, quantitative analysis, backend development, and full-stack products, across India, Singapore, and the UAE, including remote work with UK-headquartered teams.</p>
+      <div class="cta">
+        <a class="btn solid" href="mailto:dhairya2277@gmail.com">Email me</a>
+        <a class="btn ghost" href="Dhairya_Prajapati_Resume_2027_FINAL.pdf" target="_blank" rel="noopener">View resume</a>
+        <a class="btn ghost" href="https://www.linkedin.com/in/dhairya-prajapati-082a08357/" target="_blank" rel="noopener">Connect on LinkedIn</a>
       </div>
-    </div>
-
-    <div class="status-badge"><span class="status-dot"></span>Available Summer 2027 &nbsp;·&nbsp; CPT-Eligible F-1 Student</div>
-
-    <div class="hero-contact">
-      <a class="chip" href="mailto:dhairya2277@gmail.com"><svg class="ic"><use href="#i-mail"/></svg>dhairya2277@gmail.com</a>
-      <a class="chip" href="https://www.linkedin.com/in/dhairya-prajapati-082a08357/" target="_blank" rel="noopener"><svg class="ic"><use href="#i-linkedin"/></svg>LinkedIn</a>
-      <a class="chip" href="https://github.com/Dhairya19793" target="_blank" rel="noopener"><svg class="ic"><use href="#i-github"/></svg>GitHub</a>
-      <a class="chip" href="https://dhairya19793.github.io" target="_blank" rel="noopener"><svg class="ic"><use href="#i-globe"/></svg>dhairya19793.github.io</a>
-    </div>
-
-    <div class="hero-cta">
-      <a class="btn btn-solid" href="mailto:dhairya2277@gmail.com">Get in Touch</a>
-      <a class="btn btn-ghost" href="https://www.linkedin.com/in/dhairya-prajapati-082a08357/" target="_blank" rel="noopener">Connect on LinkedIn</a>
-    </div>
-
-    <p class="school-line">Cal Poly, San Luis Obispo &nbsp;·&nbsp; B.S. Computer Science &nbsp;·&nbsp; First-Year Computer Science Student</p>
-  </div>
-</div>
-
-<div class="wrap">
-
-  <div class="summary">
-    First-year Computer Science student at <b>Cal Poly San Luis Obispo</b>, building across software engineering, applied machine learning, data analytics, and backend systems. Experience spans healthcare AI, quantitative research, finance, clinical operations, and backend development, plus a published research paper on household energy analytics. Shipped <a href="#projects">StudyBuddy</a>, a full-stack Flask/Supabase platform, at the Cal Poly CodeBox Hackathon, and <b>Jarvis</b>, an offline AI voice assistant. Hands-on experience across India, Singapore, and the UAE, with remote collaboration on UK-headquartered teams.
-  </div>
-
-  <section id="projects">
-    <div class="section-head">
-      <h2>Projects</h2>
-      <span class="section-count">5 builds</span>
-    </div>
-    <div class="two-col">
-      <div class="timeline">
-
-        <div class="entry">
-          <div class="entry-top">
-            <div class="entry-title">StudyBuddy, Cal Poly CodeBox Hackathon</div>
-            <div class="entry-dates">Sep 2026</div>
-          </div>
-          <div class="entry-org">Flask · Supabase · <a href="https://studybuddy-calpoly.bolt.host/" target="_blank" rel="noopener">Live Demo</a></div>
-          <ul>
-            <li>Built a full-stack <b>study coordination platform</b> that matches students into private Study Pods by course, topic, availability, and study style, using Flask for matching logic and Supabase for real-time, privacy-protected data.</li>
-            <li>Presented at the Cal Poly CodeBox Hackathon. Shipped a deployed web app spanning Course Hubs, Study Requests, and a Solo Workspace for independent task tracking.</li>
-          </ul>
-        </div>
-
-        <div class="entry">
-          <div class="entry-top">
-            <div class="entry-title">Jarvis, Offline AI Voice Assistant</div>
-            <div class="entry-dates">May 2026</div>
-          </div>
-          <div class="entry-org">Python · Whisper · Ollama (Llama 3)</div>
-          <ul>
-            <li>Built an <b>offline voice assistant</b> integrating speech recognition, a locally run Llama 3 model, and text-to-speech, with zero cloud dependency for privacy and responsiveness.</li>
-            <li>Iterated through multiple development/testing cycles for reliable, <b>privacy-preserving local performance</b>.</li>
-          </ul>
-        </div>
-
-        <div class="entry">
-          <div class="entry-top">
-            <div class="entry-title">Food Ordering Portal</div>
-            <div class="entry-dates">Dec 2025</div>
-          </div>
-          <div class="entry-org">Python · MySQL</div>
-          <ul>
-            <li>Defined system requirements for admin/customer workflows, then designed a <b>relational database schema</b> and built a console-based CRUD application to meet them.</li>
-            <li>Applied parameterized queries and consistent <b>coding standards</b> to ensure data integrity throughout.</li>
-          </ul>
-        </div>
-
+      <div class="facts">
+        <div class="fact"><strong>6</strong><span>Internships, research roles, and simulations</span></div>
+        <div class="fact"><strong>1</strong><span>Published research paper</span></div>
+        <div class="fact"><strong>2</strong><span>Shipped products: StudyBuddy and Jarvis</span></div>
+        <div class="fact"><strong>140+</strong><span>Verified community service hours</span></div>
       </div>
-      <div class="timeline">
+    </section>
 
-        <div class="entry">
-          <div class="entry-top">
-            <div class="entry-title">Study Planner, CS50x Capstone (HarvardX)</div>
-            <div class="entry-dates">Jul 2025</div>
-          </div>
-          <div class="entry-org">Python · Flask · SQLite</div>
-          <ul>
-            <li>Designed a full-stack <b>study planning tool</b> with relational data modeling, parameterized queries, and ACID-compliant transactions for data integrity.</li>
-            <li>Built the application from concept through deployment, covering the full <b>software development lifecycle (SDLC)</b>.</li>
-          </ul>
-        </div>
-
-        <div class="entry">
-          <div class="entry-top">
-            <div class="entry-title">Tangent Galvanometer Investigation</div>
-            <div class="entry-dates"></div>
-          </div>
-          <div class="entry-org">Experimental Physics</div>
-          <ul>
-            <li>Estimated Earth's horizontal magnetic field and reduction factor K through careful experimental design, repeated trials, and data analysis.</li>
-          </ul>
-        </div>
-
+    <section id="work">
+      <h2 class="sec-title">Selected work</h2>
+      <div class="feature-grid">
+        <article class="feature">
+          <h3>Cancer biomarker discovery</h3>
+          <p>At Pharmint, I engineered differential gene expression analysis and trained Logistic Regression and Random Forest classifiers to find hypoxia-responsive gene signatures in breast cancer data (TCGA-BRCA, GEO).</p>
+          <div class="chips"><span class="chip">Python</span><span class="chip">scikit-learn</span><span class="chip">Bioinformatics</span></div>
+        </article>
+        <article class="feature">
+          <h3>StudyBuddy</h3>
+          <p>A full-stack platform built at the Cal Poly CodeBox Hackathon that matches students into private Study Pods by course, topic, availability, and study style.</p>
+          <div class="chips"><span class="chip">Flask</span><span class="chip">Supabase</span><span class="chip">Full-stack</span></div>
+          <a class="more" href="https://studybuddy-calpoly.bolt.host/" target="_blank" rel="noopener">Open the live demo</a>
+        </article>
+        <article class="feature">
+          <h3>Jarvis</h3>
+          <p>An offline AI voice assistant that combines Whisper speech recognition, a local Llama 3 model, and text-to-speech, with zero cloud dependency so conversations stay on the device.</p>
+          <div class="chips"><span class="chip">Python</span><span class="chip">Whisper</span><span class="chip">Ollama</span></div>
+        </article>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="experience">
-      <div class="section-head">
-        <h2>Experience</h2>
-        <span class="section-count">7 roles</span>
-      </div>
-      <div class="timeline">
+    <section id="experience">
+      <h2 class="sec-title">Experience</h2>
 
-        <div class="entry">
-          <div class="entry-top">
-            <div class="entry-title">AI in Healthcare Research Intern</div>
-            <div class="entry-dates">Jun 2026 - Jul 2026</div>
-          </div>
-          <div class="entry-org">Pharmint Pte Ltd · Remote (Singapore)</div>
+      <div class="row">
+        <div class="when">Jun 2026 to Jul 2026</div>
+        <div>
+          <h3>AI in Healthcare Research Intern</h3>
+          <div class="org">Pharmint Pte Ltd, Remote (Singapore)</div>
           <ul>
             <li>Completed a 6-week internship in <b>predictive modeling and biomarker discovery</b> in cancer transcriptomics, mentored by a computational biologist.</li>
             <li>Engineered <b>differential gene expression analysis</b> (log2FC, adjusted p-values) and trained <b>ML classifiers</b> (Logistic Regression, Random Forest) to identify hypoxia-responsive gene signatures in breast cancer transcriptomics data (TCGA-BRCA, GEO).</li>
           </ul>
         </div>
+      </div>
 
-        <div class="entry">
-          <div class="entry-top">
-            <div class="entry-title">Research Author</div>
-            <div class="entry-dates">Jun 2025</div>
-          </div>
-          <div class="entry-org">Researchory · Remote Research Program</div>
+      <div class="row">
+        <div class="when">Jun 2025</div>
+        <div>
+          <h3>Research Author</h3>
+          <div class="org">Researchory, Remote Research Program</div>
           <ul>
-            <li>Published a <b>research paper</b> on household energy analytics on Researchory (<a href="https://www.researchory.com/research-paper/energy-consumption-and-efficiency-in-households/" target="_blank" rel="noopener">read the paper</a>), applying exploratory data analysis (EDA) to identify usage patterns and efficiency opportunities.</li>
-            <li>Documented methodology and data-driven efficiency recommendations for publication, strengthening <b>technical writing</b> and data storytelling skills.</li>
+            <li>Published a research paper on Researchory about <b>household energy analytics</b>, applying exploratory data analysis (EDA) to identify usage patterns and efficiency opportunities. <a href="https://www.researchory.com/research-paper/energy-consumption-and-efficiency-in-households/" target="_blank" rel="noopener">Read the paper</a>.</li>
+            <li>Documented methodology and data-driven efficiency recommendations for publication, strengthening technical writing and data storytelling skills.</li>
           </ul>
         </div>
+      </div>
 
-        <div class="entry">
-          <div class="entry-top">
-            <div class="entry-title">Research Mentee, Quantitative Analysis</div>
-            <div class="entry-dates">Mar 2025 - Apr 2025</div>
-          </div>
-          <div class="entry-org">CSPIT, CHARUSAT · Remote (India)</div>
+      <div class="row">
+        <div class="when">Mar 2025 to Apr 2025</div>
+        <div>
+          <h3>Research Mentee, Quantitative Analysis</h3>
+          <div class="org">CSPIT, CHARUSAT, Remote (India)</div>
           <ul>
-            <li>Conducted <b>stock trend analysis</b> in Python (pandas, statsmodels) using regression, moving averages, and time series methods under faculty mentorship.</li>
-            <li>Presented findings and visualizations to a faculty mentor, summarizing trend patterns and <b>forecasting insights</b> for further discussion.</li>
+            <li>Conducted stock trend analysis in Python (pandas, statsmodels) using <b>regression, moving averages, and time series methods</b> under faculty mentorship.</li>
+            <li>Presented findings and visualizations to a faculty mentor, summarizing trend patterns and forecasting insights for further discussion.</li>
           </ul>
         </div>
+      </div>
 
-        <div class="entry">
-          <div class="entry-top">
-            <div class="entry-title">Data Science Simulation, Customer Analytics</div>
-            <div class="entry-dates">Mar 2025</div>
-          </div>
-          <div class="entry-org">British Airways (Forage) · Remote</div>
+      <div class="row">
+        <div class="when">Mar 2025</div>
+        <div>
+          <h3>Data Science Simulation, Customer Analytics</h3>
+          <div class="org">British Airways (Forage), Remote</div>
           <ul>
-            <li>Completed a virtual job simulation, applying <b>web scraping and customer profiling</b> in Python to segment customers for personalized marketing decisions.</li>
-            <li>Built <b>UX visualizations</b> to communicate customer insights, following a structured project workflow from data collection through presentation.</li>
+            <li>Completed a virtual job simulation, applying <b>web scraping</b> and customer profiling in Python to segment customers for personalized marketing decisions.</li>
+            <li>Built UX visualizations to communicate customer insights, following a structured project workflow from data collection through presentation.</li>
           </ul>
         </div>
+      </div>
 
-        <div class="entry">
-          <div class="entry-top">
-            <div class="entry-title">Finance &amp; Banking Intern</div>
-            <div class="entry-dates">Jul 2024</div>
-          </div>
-          <div class="entry-org">Grey Sells · Dubai, UAE</div>
+      <div class="row">
+        <div class="when">Aug 2024</div>
+        <div>
+          <h3>Clinical Observer</h3>
+          <div class="org">Medeor Hospital, Abu Dhabi, UAE</div>
           <ul>
-            <li>Shadowed banking professionals to learn <b>corporate finance, KYC, and valuation</b> processes over a two-week internship.</li>
-            <li>Assisted with basic <b>financial modelling</b> exercises, building foundational understanding of valuation techniques.</li>
+            <li>Observed clinical workflows across Cardiology, Neurology, and ICU departments during a one-week hospital rotation.</li>
+            <li>Gained early exposure to health-tech systems and data-driven decision-making processes used in clinical settings.</li>
           </ul>
         </div>
+      </div>
 
-        <div class="entry">
-          <div class="entry-top">
-            <div class="entry-title">Clinical Observer</div>
-            <div class="entry-dates">2024</div>
-          </div>
-          <div class="entry-org">Medeor Hospital · Abu Dhabi, UAE</div>
+      <div class="row">
+        <div class="when">Jul 2024</div>
+        <div>
+          <h3>Finance &amp; Banking Intern</h3>
+          <div class="org">Grey Sells, Dubai, UAE</div>
           <ul>
-            <li>Observed clinical workflows across <b>Cardiology, Neurology, and ICU</b> departments during a one-week hospital rotation.</li>
-            <li>Gained early exposure to health-tech systems and <b>data-driven decision-making</b> processes used in clinical settings.</li>
+            <li>Shadowed banking professionals to learn corporate finance, KYC, and valuation processes over a two-week internship.</li>
+            <li>Assisted with basic financial modelling exercises, building foundational understanding of valuation techniques.</li>
           </ul>
         </div>
+      </div>
 
-        <div class="entry">
-          <div class="entry-top">
-            <div class="entry-title">Python Intern</div>
-            <div class="entry-dates">Jul 2023 - Aug 2023</div>
-          </div>
-          <div class="entry-org">BizzAppDev Systems Pvt. Ltd. · Remote (India)</div>
+      <div class="row">
+        <div class="when">Jul 2023 to Aug 2023</div>
+        <div>
+          <h3>Python Intern</h3>
+          <div class="org">BizzAppDev Systems Pvt. Ltd., Remote (India)</div>
           <ul>
             <li>Contributed <b>backend modules</b> to a live Python/PostgreSQL/XML codebase, following modular design and coding standards.</li>
             <li>Debugged and maintained backend modules using Git-based <b>version control</b> on Linux, supporting documentation and software maintenance.</li>
           </ul>
         </div>
+      </div>
+    </section>
 
+    <section id="projects">
+      <h2 class="sec-title">Projects</h2>
+
+      <div class="row">
+        <div class="when">Sep 2026</div>
+        <div>
+          <h3>StudyBuddy</h3>
+          <div class="org">Cal Poly CodeBox Hackathon | Flask, Supabase | <a href="https://studybuddy-calpoly.bolt.host/" target="_blank" rel="noopener">Live demo</a></div>
+          <ul>
+            <li>Built a full-stack study coordination platform matching students into private Study Pods by course, topic, availability, and study style, using Flask for matching logic and Supabase for real-time, privacy-protected data.</li>
+            <li>Presented at the Cal Poly CodeBox Hackathon. Shipped a deployed web app spanning Course Hubs, Study Requests, and a Solo Workspace.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="when">May 2026</div>
+        <div>
+          <h3>Jarvis, Offline AI Voice Assistant</h3>
+          <div class="org">Python, Whisper, Ollama (Llama 3)</div>
+          <ul>
+            <li>Built an offline voice assistant integrating speech recognition, a locally run Llama 3 model, and text-to-speech, with zero cloud dependency for privacy and responsiveness.</li>
+            <li>Iterated through multiple development and testing cycles for reliable, privacy-preserving local performance.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="when">Dec 2025</div>
+        <div>
+          <h3>Food Ordering Portal</h3>
+          <div class="org">Python, MySQL</div>
+          <ul>
+            <li>Defined system requirements for admin and customer workflows, then designed a relational database schema and built a console-based CRUD application.</li>
+            <li>Applied parameterized queries and consistent coding standards to ensure data integrity throughout.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="when">Jul 2025</div>
+        <div>
+          <h3>Study Planner, CS50x Capstone (HarvardX)</h3>
+          <div class="org">Python, Flask, SQLite</div>
+          <ul>
+            <li>Designed a full-stack study planning tool with relational data modeling, parameterized queries, and ACID-compliant transactions for data integrity.</li>
+            <li>Built the application from concept through deployment, covering the full software development lifecycle (SDLC).</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="when">2025</div>
+        <div>
+          <h3>Tangent Galvanometer Investigation</h3>
+          <div class="org">Experimental Physics</div>
+          <ul>
+            <li>Estimated Earth's horizontal magnetic field and reduction factor K through careful experimental design, repeated trials, and data analysis.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="when">2025</div>
+        <div>
+          <h3>Research Essay: Ratan Tata</h3>
+          <div class="org">English, Academic Writing</div>
+          <ul>
+            <li>Wrote a 1,000-word essay on ethics-first leadership, covering the Nano, TCS, JLR, Corus, and Tata Trusts, with structured headings, academic citations, and a balanced conclusion.</li>
+          </ul>
+        </div>
       </div>
     </section>
 
     <section id="education">
-    <div class="section-head"><h2>Education</h2></div>
-    <div class="edu-card">
-      <div class="edu-name">California Polytechnic State University, San Luis Obispo</div>
-      <div class="edu-detail">B.S. Computer Science | First-Year Computer Science Student | <b>Aug 2026 - May 2030</b></div>
-      <div class="edu-detail" style="margin-top:6px; font-style:italic;">Pre-College Coursework (CBSE, India/UAE): Computer Science, Mathematics, Physics, Chemistry, English | Harvard CS50x: Introduction to Computer Science</div>
-    </div>
-  </section>
+      <h2 class="sec-title">Education</h2>
+      <div class="edu">
+        <div>
+          <h3>California Polytechnic State University, San Luis Obispo</h3>
+          <div class="org" style="margin-bottom:0">B.S. Computer Science, Aug 2026 to May 2030</div>
+        </div>
+        <dl>
+          <dt>Coursework</dt><dd>AP Calculus AB, AP Computer Science Principles, Harvard CS50x: Introduction to Computer Science</dd>
+          <dt>Planned Spring 2027</dt><dd>Data Structures (CSC 2001), Calculus II</dd>
+          <dt>Pre-college</dt><dd>CBSE, India and UAE: Computer Science, Mathematics, Physics, Chemistry, English</dd>
+        </dl>
+      </div>
 
-  <section id="certifications">
-    <div class="section-head"><h2>Certifications</h2></div>
-    <div class="card-list">
-      <div class="info-card"><b>Harvard CS50x</b>: Introduction to Computer Science, HarvardX/edX (Verified) · Jul 2025.</div>
-      <div class="info-card"><b>Great Learning</b> (Verified): AI with Python, AI Fundamentals, SQL/R/Excel for Data Science, Business Finance Foundations, JavaScript Projects, Data Science Foundations, Effective Communication, Business Process Management · Apr - May 2025.</div>
-      <div class="info-card"><b>Udemy</b> (Verified): Intro to Data Analytics &amp; AI and Finance &amp; Accounting Modeling &amp; Valuation (6.0 NASBA CPE) · Mar 2025.</div>
-      <div class="info-card"><b>PurpleTutor</b>: Python Programming, Verified with Distinction · Jan 2022.</div>
-      <div class="info-card"><b>TDRA Virtual Academy</b> (Verified): Cloud Computing Services.</div>
-    </div>
-  </section>
+      <div class="cert-list">
+        <div class="cert"><b>Harvard CS50x</b>HarvardX/edX (Verified), 10 problem sets and final project, Jul 2025</div>
+        <div class="cert"><b>Great Learning (Verified)</b>AI with Python, AI Fundamentals, Python, SQL, R and Excel for Data Science, Data Science Foundations, JavaScript Projects, Business Finance Foundations, Business Process Management, Effective Communication, Leadership &amp; Management</div>
+        <div class="cert"><b>Udemy (Verified)</b>Finance &amp; Accounting, Modeling &amp; Valuation (6.0 NASBA CPE) and Introduction to Data Analytics &amp; AI, Mar 2025</div>
+        <div class="cert"><b>PurpleTutor</b>Python Programming, Verified with Distinction, Jan 2022</div>
+        <div class="cert"><b>TDRA Virtual Academy (Verified)</b>Cloud Computing Services</div>
+      </div>
+    </section>
 
-  <section id="leadership">
-    <div class="section-head"><h2>Leadership &amp; Community</h2></div>
-    <div class="card-list">
-      <div class="info-card"><b>Founder &amp; Reviver, PIES Gavel Club:</b> Revived the school's public speaking club and organized regular meetings.</div>
-      <div class="info-card"><b>Delegate, PIESMUN:</b> Represented Madagascar's position in the SOCHUM Committee, applying research, problem-solving, communication, and interpersonal skills.</div>
-      <div class="info-card"><b>Volunteer Tutor, Angel Xpress Foundation:</b> 40+ hours of Science &amp; Math tutoring, plus 140+ verified community service hours overall.</div>
-      <div class="info-card"><b>Vice-Captain, U-19 Kho-Kho Team:</b> CBSE cluster/interschool competition, 3 years.</div>
-      <div class="info-card"><b>Additional community service:</b> EEG Clean UAE, SAHIM Citizen Science Cleanup, M&amp;N Brothers mentorship.</div>
-    </div>
-  </section>
+    <section id="beyond">
+      <h2 class="sec-title">Beyond code</h2>
 
-  <section id="honors">
-    <div class="section-head"><h2>Honors &amp; Awards</h2></div>
-    <div class="badges">
-      <div class="badge highlight"><svg class="ic"><use href="#i-star"/></svg>SCO International Science Olympiad: Gold &amp; Outstanding Performance (2022-23)</div>
-      <div class="badge">Rank 44/2,981, SCO Olympiad (2023-24)</div>
-      <div class="badge">International Olympiad Foundation: Top 42% AI, Top 59% Science, Top 77% English</div>
-      <div class="badge">askIITians iCAT: Country Rank 6</div>
-      <div class="badge">CBSE Yogasana Nationals (U-19): Two-time National Qualifier</div>
-      <div class="badge">UAE CBSE Cluster Yogasana: Gold 2024, Silver 2025</div>
-      <div class="badge">Sports Merit Award, PIES Abu Dhabi (2018-2019)</div>
-    </div>
-  </section>
+      <details open>
+        <summary>Honors &amp; awards <small>8 recognitions</small></summary>
+        <div class="items">
+          <div class="item"><b>SCO International Science Olympiad:</b> Gold and International Outstanding Performance (2022-23), International Rank 44 of 2,981 (2023-24).</div>
+          <div class="item"><b>International Olympiad Foundation:</b> Top 42% in AI, Top 59% in Science, Top 77% in English.</div>
+          <div class="item"><b>askIITians iCAT:</b> Country Rank 6.</div>
+          <div class="item"><b>CBSE Yogasana Nationals (U-19):</b> Two-time National qualifier (2024, 2025).</div>
+          <div class="item"><b>UAE CBSE Cluster Yogasana (U-19):</b> Gold (2024) and Silver (2025).</div>
+          <div class="item"><b>Volcano Under-14 Cricket Championship:</b> Runner-Up (2023).</div>
+          <div class="item"><b>School Drama Awards:</b> Best Dialogue (The Merchant of Venice) and Best Performer (Julius Caesar).</div>
+          <div class="item"><b>Sports Merit Award, PIES Abu Dhabi:</b> Individual Champion (2018-19).</div>
+        </div>
+      </details>
 
-  <section id="skills">
-    <div class="section-head"><h2>Technical Skills</h2></div>
-    <div class="skills-grid">
-      <div>
-        <div class="skill-cat">Languages</div>
-        <div class="pill-row">
-          <span class="pill">Python</span><span class="pill">Java</span><span class="pill">C</span><span class="pill">SQL</span><span class="pill">JavaScript</span><span class="pill">Scratch</span>
+      <details>
+        <summary>Leadership &amp; extracurriculars <small>11 activities</small></summary>
+        <div class="items">
+          <div class="item"><b>Vice-Captain, U-19 Kho-Kho Team:</b> Led the team in CBSE cluster and interschool competition.</div>
+          <div class="item"><b>Founder &amp; Reviver, PIES Gavel Club:</b> Revived the school's public speaking club and organized regular meetings.</div>
+          <div class="item"><b>Delegate, PIESMUN:</b> Represented Madagascar in the SOCHUM Committee, applying research, problem-solving, communication, and interpersonal skills.</div>
+          <div class="item"><b>Student Delegate, PIES Talk on Law &amp; Order:</b> Took part in a session with IPS Anand Mishra. <a href="https://www.youtube.com/watch?v=bp9oT1gytas" target="_blank" rel="noopener">Watch the video</a>.</div>
+          <div class="item"><b>Inter-School Language Events:</b> 3rd place, Linguistic Luminary (Al-Tasamuh, GIIS Abu Dhabi).</div>
+          <div class="item"><b>OnlySuccess "Be A Champ" Leadership Training (UAE):</b> Completed a structured leadership program.</div>
+          <div class="item"><b>EEG 4th Panel Discussion (2022):</b> Participated in "Taking Packaging: Full Circle".</div>
+          <div class="item"><b>PIES Farewell 2K24 and Onam '25:</b> Front performer and cues lead.</div>
+          <div class="item"><b>Dance Performer, BGT 2025:</b> Choreographed a group piece, building rhythm and teamwork.</div>
+          <div class="item"><b>Fashion Show, Mathematics Department, PIES (Oct 2024):</b> Participant.</div>
+          <div class="item"><b>School Mathletics Competition:</b> Trophy winner. Hindi Club: 1st in Poem, Quiz, and Reading, 2nd in Handwriting.</div>
         </div>
-      </div>
-      <div>
-        <div class="skill-cat">Software Development</div>
-        <div class="pill-row">
-          <span class="pill">OOP</span><span class="pill">Software Design</span><span class="pill">Coding Standards</span><span class="pill">Debugging</span><span class="pill">Testing</span><span class="pill">Documentation</span><span class="pill">Git</span>
-        </div>
-      </div>
-      <div>
-        <div class="skill-cat">Frameworks &amp; Backend</div>
-        <div class="pill-row">
-          <span class="pill">Flask</span><span class="pill">Supabase</span><span class="pill">SQLite</span><span class="pill">MySQL</span><span class="pill">PostgreSQL</span><span class="pill">REST APIs</span><span class="pill">Relational Data Modeling</span>
-        </div>
-      </div>
-      <div>
-        <div class="skill-cat">AI / ML</div>
-        <div class="pill-row">
-          <span class="pill">pandas</span><span class="pill">NumPy</span><span class="pill">scikit-learn</span><span class="pill">statsmodels</span><span class="pill">EDA</span><span class="pill">Regression</span><span class="pill">Classification</span><span class="pill">Time Series</span>
-        </div>
-      </div>
-      <div>
-        <div class="skill-cat">Quantitative &amp; Finance</div>
-        <div class="pill-row">
-          <span class="pill">Financial Modeling</span><span class="pill">Valuation</span><span class="pill">Statistical Analysis</span><span class="pill">Business Finance Foundations</span>
-        </div>
-      </div>
-      <div>
-        <div class="skill-cat">Tools &amp; Platforms</div>
-        <div class="pill-row">
-          <span class="pill">Git</span><span class="pill">GitHub</span><span class="pill">Linux</span><span class="pill">Excel</span><span class="pill">Access</span><span class="pill">Tableau (basic)</span><span class="pill">R (basic)</span><span class="pill">Whisper</span><span class="pill">Ollama</span>
-        </div>
-      </div>
-      <div>
-        <div class="skill-cat">Spoken Languages</div>
-        <div class="pill-row">
-          <span class="pill">English: Fluent</span><span class="pill">Hindi: Fluent</span><span class="pill">Gujarati: Native</span><span class="pill">Arabic: Conversational</span>
-        </div>
-      </div>
-    </div>
-  </section>
+      </details>
 
-  <footer>
-    <div class="footer-links">
-      <a href="mailto:dhairya2277@gmail.com" aria-label="Email"><svg class="ic"><use href="#i-mail"/></svg></a>
-      <a href="https://www.linkedin.com/in/dhairya-prajapati-082a08357/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg class="ic"><use href="#i-linkedin"/></svg></a>
-      <a href="https://github.com/Dhairya19793" target="_blank" rel="noopener" aria-label="GitHub"><svg class="ic"><use href="#i-github"/></svg></a>
-    </div>
-    <div>© 2026 Dhairya Prajapati</div>
-  </footer>
+      <details>
+        <summary>Volunteer &amp; community service <small>140+ verified hours</small></summary>
+        <div class="items">
+          <div class="item"><b>Volunteer Tutor, Angel Xpress Foundation:</b> 40+ hours of Science and Math tutoring for underprivileged students at the Dubai Centre.</div>
+          <div class="item"><b>Educational &amp; Motivational Mentor, M. &amp; N. Brothers High School:</b> Supported and motivated students, and received a Certificate of Appreciation.</div>
+          <div class="item"><b>EEG Neighbourhood Recycling Project (2024):</b> Collected 485 kg of waste (350 kg paper, 60 kg plastic, 75 kg glass), earning eligibility to plant 4 trees under "For Our Emirates We Plant".</div>
+          <div class="item"><b>EEG Clean UAE 2022:</b> Took part in the national cleanup campaign.</div>
+          <div class="item"><b>SAHIM Citizen Science Cleanup (EAD, Lulu Island):</b> Coastal cleanup.</div>
+          <div class="item"><b>EEG Virtual Students' Workshop:</b> "The Quintessential Net Zero".</div>
+          <div class="item"><b>Clothes Donation Drive:</b> Emirates Red Crescent and Awqaf (UAE).</div>
+          <div class="item"><b>MOTN Inclusive Basketball 3x3 (2024):</b> Volunteer.</div>
+          <div class="item"><b>PIES Library Reading Rockstar (Aug 2024):</b> Volunteer.</div>
+          <div class="item"><b>Member, Bhavans Natura:</b> School Eco Club.</div>
+        </div>
+      </details>
+
+      <details>
+        <summary>Sports <small>7 disciplines</small></summary>
+        <div class="items">
+          <div class="item"><b>CBSE Yogasana Nationals (U-19):</b> Surat (Oct 2-5, 2024) and Karnal (Sept 13-16, 2025).</div>
+          <div class="item"><b>UAE CBSE Cluster Yogasana (U-19):</b> Gold (2024) and Silver (2025). Advanced asanas, alignment, and endurance.</div>
+          <div class="item"><b>Kho-Kho, Vice-Captain:</b> U-17 (1 year) and U-19 (2 years), CBSE cluster and interschool.</div>
+          <div class="item"><b>Cricket (U-14 and U-17):</b> Runner-Up, Volcano Championship. 1 Gold and 3 Silver with Al Etihad Cricket Academy.</div>
+          <div class="item"><b>Football:</b> Sport Support Club and Mubadala Youth League (U-17).</div>
+          <div class="item"><b>ADNOC Abu Dhabi Marathon:</b> 5K finisher (2022 and 2023).</div>
+          <div class="item"><b>Athletics:</b> 3rd place, 4x100 m Relay, Intramural Sports Meet (2024-25).</div>
+        </div>
+      </details>
+
+      <details>
+        <summary>Enrichment &amp; interests</summary>
+        <div class="items">
+          <div class="item"><b>STEM@BITS:</b> BITS Pilani, Dubai.</div>
+          <div class="item"><b>ADNOC STEM for Life:</b> Talented Youth in Industry program.</div>
+          <div class="item"><b>DIDI Project Design Space (Jun 2023):</b> Dubai Institute of Design &amp; Innovation.</div>
+          <div class="item"><b>Holistic Personality Development:</b> Holistic Science Research Center, Surat, plus 25+ spiritual and life-skills events with Jai Sachchidanand Sangh, Gujarat.</div>
+          <div class="item"><b>Interests:</b> Reading (spiritual, motivational, educational, science), acting, trekking and adventure, exploring new places, cricket, football, billiards, yoga, swimming, athletics, gym, public speaking, music.</div>
+        </div>
+      </details>
+    </section>
+
+    <section id="skills">
+      <h2 class="sec-title">Skills</h2>
+      <dl class="skills">
+        <div class="skill-row"><dt>Languages</dt><dd>Python, Java, C, SQL, JavaScript, Scratch. Concepts: Object-Oriented Programming, Data Structures, Algorithms.</dd></div>
+        <div class="skill-row"><dt>Software development</dt><dd>Software design, coding standards, debugging, testing, software maintenance, technical documentation, Git.</dd></div>
+        <div class="skill-row"><dt>Frameworks &amp; backend</dt><dd>Flask, Supabase, SQLite, MySQL, PostgreSQL, REST APIs, relational data modeling.</dd></div>
+        <div class="skill-row"><dt>AI &amp; machine learning</dt><dd>pandas, NumPy, scikit-learn, statsmodels, EDA, regression, classification, time series forecasting.</dd></div>
+        <div class="skill-row"><dt>Quantitative &amp; finance</dt><dd>Financial modeling, valuation, statistical analysis, business finance foundations.</dd></div>
+        <div class="skill-row"><dt>Tools &amp; platforms</dt><dd>Git, GitHub, Linux, Excel, Access, Tableau (basic), R (basic), Whisper, Ollama, Filmora, Clipchamp.</dd></div>
+        <div class="skill-row"><dt>Professional</dt><dd>Leadership, public speaking, peer mentorship, team collaboration, structured documentation, event management.</dd></div>
+        <div class="skill-row"><dt>Spoken languages</dt><dd>English (Fluent), Hindi (Fluent), Gujarati (Native), Arabic (Conversational).</dd></div>
+      </dl>
+    </section>
+
+    <footer>
+      <span>&copy; 2026 Dhairya Prajapati</span>
+      <span>San Luis Obispo, California</span>
+    </footer>
+  </main>
 </div>
 
 <script>
-  // Nav shadow on scroll
-  var nav = document.getElementById('nav');
-  var onScroll = function(){
-    if (window.scrollY > 8) { nav.classList.add('scrolled'); }
-    else { nav.classList.remove('scrolled'); }
-  };
-  window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
-
-  // Reveal sections on scroll + active nav link.
-  // Content stays visible by default (see CSS); the fade-in is opt-in via
-  // .js-reveal, and a timed fallback guarantees everything is shown even if
-  // IntersectionObserver never fires (slow devices, scroll-less captures, etc).
-  var sections = document.querySelectorAll('section[id]');
-  var navLinks = document.querySelectorAll('.nav-links a');
-  var linkFor = {};
-  navLinks.forEach(function(a){ linkFor[a.getAttribute('href').slice(1)] = a; });
-
-  var reducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  if ('IntersectionObserver' in window && !reducedMotion) {
-    document.documentElement.classList.add('js-reveal');
-
-    var revealObserver = new IntersectionObserver(function(entries){
-      entries.forEach(function(entry){
-        if (entry.isIntersecting) { entry.target.classList.add('in-view'); }
-      });
-    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
-    sections.forEach(function(s){ revealObserver.observe(s); });
-
-    // Safety net: force every section visible after a short delay no matter what.
-    setTimeout(function(){
-      sections.forEach(function(s){ s.classList.add('in-view'); });
-    }, 2500);
-
-    var spyObserver = new IntersectionObserver(function(entries){
-      entries.forEach(function(entry){
-        var link = linkFor[entry.target.id];
-        if (!link) return;
-        if (entry.isIntersecting) {
-          navLinks.forEach(function(a){ a.classList.remove('active'); });
-          link.classList.add('active');
+  // Highlight the current section in the side navigation.
+  (function(){
+    var links = {};
+    document.querySelectorAll('.rail nav a').forEach(function(a){ links[a.getAttribute('href').slice(1)] = a; });
+    var sections = document.querySelectorAll('main section[id]');
+    if (!('IntersectionObserver' in window)) return;
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting && links[e.target.id]) {
+          Object.keys(links).forEach(function(k){ links[k].classList.remove('active'); });
+          links[e.target.id].classList.add('active');
         }
       });
-    }, { rootMargin: '-45% 0px -50% 0px' });
-    sections.forEach(function(s){ spyObserver.observe(s); });
-  } else {
-    sections.forEach(function(s){ s.classList.add('in-view'); });
-  }
+    }, { rootMargin: '-30% 0px -60% 0px' });
+    sections.forEach(function(s){ io.observe(s); });
+  })();
 </script>
-
 </body>
 </html>
